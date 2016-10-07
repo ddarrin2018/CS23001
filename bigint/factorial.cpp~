@@ -1,0 +1,52 @@
+/**
+ *Marianna Matousek
+ *add.cpp
+ *CS23001
+ *This program inputs bigint from a file, adds them and prints out the result.
+ */
+#include <iostream>
+#include <cstdlib>
+#include "bigint.hpp"
+
+int main() {
+  bigint bi(100);
+  //bi! doesn't work because... c++?
+  //so I just did factorial()
+  bigint factorial = bi.factorial(); 
+
+
+  std::cout << bi << "! is equal to:\n" << factorial << "\n\n";
+
+  int zeroes = bi.trailing_zeroes(); 
+  std::cout << bi << "! has " << zeroes << " trailing zero(es).\n"; 
+  
+  std::cout << "I calculated this answer using three methods: \n"
+	    << "1: oveloaded minus operator (accurate only for results >=0)\n"
+	    << "2: a factorial method\n"
+	    << "3: a trailing_zeroes method\n\n"
+
+	    << "In a while loop, using the minus operator I subtracted 1 from a temporary bigint variable\n"
+	    << "which I multiplied by the result where I kept the running total product.\n"
+	    << "When temp becomes zero the result variable holds the factorial value of the object.\n\n"
+
+	    << "In the trailing zeroes function I just count the number of zeroes encountered\n"
+	    << "before the while loop reaches a non zero digit in the bigintArray.\n"
+<< "-----------------------------------------------------------------------------\n"
+<< "Using mathematics a way to calculate the number of trailing zeroes is to\n"
+<< "divide the number by 5 until a quotient of less than 1 is reached, then add together\n"
+<< "All the whole number results and that is the answer. \nExample using 100!: \n"
+<< "100 / 5 = 20\n"
+<< "20 / 5 = 4\n"
+<< "4/ 5 = .8\n"
+<< "Total = 20 + 4\n"
+<< "The answer is 24.\n\n";
+
+std::cout << "This took way more time than I thought it would and these functions aren't the greatest\n"
+<< "but pleease give me some extra credit anyway.\n\n";
+
+
+
+
+return 0;
+}
+
