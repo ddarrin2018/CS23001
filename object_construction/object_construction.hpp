@@ -1,4 +1,4 @@
-*/Marianna Matousek
+/*Marianna Matousek
 *Lab6
 *object_construction.hpp
 */
@@ -15,5 +15,6 @@ public:
 
 private:
   int *size; 
+  int cap; 
 
-}
+};
