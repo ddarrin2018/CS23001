@@ -3,7 +3,7 @@
 *string-mile1.cpp
 */
 
-#include "string-mile1.hpp"
+#include "string.hpp"
 
 //empty string
 String::String() {
@@ -45,17 +45,51 @@ String::String(const char word[]) {
 	}
 }
 
+/*X-Ask about these to operators*/
 //Accessor/Modifier
-//char& String::operator[](int) {
-	//
-//}
+char& String::operator[](int i) {
+	assert(i >= 0);
+	assert(i <= length()); 
+	return str[i];
+}
 
 //Accessor
-//char operator[](int i)const {
-	//assert(i >= 0);
-	//assert(i < length());
-//} 
+char String::operator[](int i)const {
+	assert(i >= 0);
+	assert(i < length());
+	return str[i];
+} 
 
+//Concatenation
+String  String::operator+(const String& rhs)  const {
+	String result(str);
+	int offset = result.length();
+
+	int i = 0;
+	while (rhs.str[i] != 0) {
+		result.str[offset + i] = rhs.str[i];
+		++i;
+	}
+	result.str[offset + i] = 0;
+
+	return result;
+}
+
+//Concatenation
+String& String::operator+=(String rhs) {
+	
+	int offset = length();
+
+	int i = 0;
+	while (rhs.str[i] != 0) {
+		str[offset + i] = rhs.str[i];
+		++i;
+	}
+	str[offset + i] = 0;
+
+	return *this;
+
+}
 
 
 
