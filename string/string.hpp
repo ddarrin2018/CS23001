@@ -46,6 +46,12 @@ public:
     friend  std::istream& operator>>(std::istream&, String&);
     friend  std::ostream& operator<<(std::ostream&, const String&);
 
+	
+	String substr(int, int)const;
+	
+	
+	int    findstr(int, const String&) const;
+	int    findchar(int, char) const;
 private:
     char str[STRING_SIZE];
 };
