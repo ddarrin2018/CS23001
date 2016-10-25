@@ -21,7 +21,7 @@ int main ()
 
         // VERIFY
         assert(str[0] == 'a');
-		assert(str[1] == '\0');
+	assert(str[1] == '\0');
 
     }
 
@@ -54,8 +54,7 @@ int main ()
       assert(str[0] == '\0');
     }
 
-
-std::cout << "Done testing char array constructor." << std::endl;
+	std::cout << "Done testing char array constructor." << std::endl;
       
 	
 }
