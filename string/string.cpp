@@ -32,7 +32,7 @@ int String::length() const {
 
 
 //String("abcd")
-String::String(const char word[]) {
+String::String(const char word[]): String(){
 	int i = 0;
 	while (word[i] != 0) {///changed
 		str[i] = word[i];
