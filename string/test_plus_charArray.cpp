@@ -1,6 +1,6 @@
 //  String class test program
 //
-//  Tests: char array + char
+//  Tests: char array + String
 //
 
 #include "string.hpp"
