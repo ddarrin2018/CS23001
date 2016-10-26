@@ -1,6 +1,6 @@
 //  String class test program
 //
-//  Tests: XXX
+//  Tests: capacity
 //
 
 #include "string.hpp"
@@ -13,83 +13,25 @@ int main ()
     {
         //------------------------------------------------------
         // SETUP FIXTURE
-        String  str(X);
-
+		String  str;
         // TEST
-        RESULT_TYPE result = str.OP();
+        int result = str.capacity();
 
         // VERIFY
-        assert(str    == X);
-        assert(result == X);
+        assert(str == "");
+        assert(result == (STRING_SIZE-1));
     }
-
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    // ADD ADDITIONAL TESTS AS NECESSARY
+	{
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String  str("abc");
+		// TEST
+		int result = str.capacity();
+		// VERIFY
+		assert(str == "abc");
+		assert(result == (STRING_SIZE - 1));
+	}
     
-    std::cout << "Done testing XXX." << std::endl;
+    std::cout << "Done testing capacity()." << std::endl;
 }
 
