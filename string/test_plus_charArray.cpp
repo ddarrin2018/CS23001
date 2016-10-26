@@ -1,6 +1,6 @@
 //  String class test program
 //
-//  Tests: XXX
+//  Tests: char array + char
 //
 
 #include "string.hpp"
@@ -10,86 +10,75 @@
 //===========================================================================
 int main ()
 {
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
+	{
+		
+		
+	}
+	{
+		//charArray plus empty String
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		char a[] = { 'a','b', 'c', '\0' };
+		String str;
 
-        // TEST
-        RESULT_TYPE result = str.OP();
+		// TEST
+		String result = a + str; 
 
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
+		// VERIFY
+		assert((a[0] == 'a') && (a[1]=='b') && (a[2] == 'c') && (a[3] == 0));
+		assert(str == "");
+		assert(result == "abc");
+	}
 
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
+	{
+		//charArray plus String 
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		char a[] = { 'a','b', 'c', '\0' };
+		String str("def");
 
-        // TEST
-        RESULT_TYPE result = str.OP();
+		// TEST
+		String result = a + str;
 
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
+		// VERIFY
+		assert((a[0] == 'a') && (a[1] == 'b') && (a[2] == 'c') && (a[3] == 0));
+		assert(str == "def");
+		assert(result == "abcdef");
+	}
 
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
+	{
+		//empty charArray plus String 
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		char a[5] = {0};
+		String str("def");
 
-        // TEST
-        RESULT_TYPE result = str.OP();
+		// TEST
+		String result = a + str;
 
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
+		// VERIFY
+		assert(a[0] == 0);
+		assert(str == "def");
+		assert(result == "def");
+	}
 
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
+	{
+		//"empty" chara array and String
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		char a[] = {0};
+		String str("");
 
-        // TEST
-        RESULT_TYPE result = str.OP();
+		// TEST
+		String result = a + str;
 
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
+		// VERIFY
+		assert(a[0] == 0);
+		assert(str == "");
+		assert(result == "");
+	}
 
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
+	std::cout << "Done testing concatination charArray plus String" << std::endl;
 
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    // ADD ADDITIONAL TESTS AS NECESSARY
-    
-    std::cout << "Done testing XXX." << std::endl;
 }
 
