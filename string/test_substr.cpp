@@ -1,6 +1,6 @@
 //  String class test program
 //
-//  Tests: XXX
+//  Tests: substring
 //
 
 #include "string.hpp"
@@ -10,86 +10,62 @@
 //===========================================================================
 int main ()
 {
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
+	{
+		//start == 0 && end < length
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str1("alligator");
 
-        // TEST
-        RESULT_TYPE result = str.OP();
+		// TEST
+		String result = str1.substr(0,2);
 
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
+		// VERIFY
+		assert(str1 == "alligator");
+		assert(result == "all");
 
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
+	}
 
-        // TEST
-        RESULT_TYPE result = str.OP();
+	{
+		//start ==0 && end > length
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str1("alligator");
 
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
+		// TEST
+		String result = str1.substr(0, 11);
 
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    // ADD ADDITIONAL TESTS AS NECESSARY
+		// VERIFY
+		assert(str1 == "alligator");
+		assert(result == "");
+	}
     
-    std::cout << "Done testing XXX." << std::endl;
+	{
+		//start >0 && end < length
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str1("alligator");
+
+		// TEST
+		String result = str1.substr(2, 4);
+
+		// VERIFY
+		assert(str1 == "alligator");
+		assert(result == "lig");
+	}
+
+	{
+		//start < 0 && end < length
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str1("alligator");
+
+		// TEST
+		String result = str1.substr(-3, 4);
+
+		// VERIFY
+		assert(str1 == "alligator");
+		assert(result == "allig");
+	}
+    std::cout << "Done testing substr()." << std::endl;
 }
 

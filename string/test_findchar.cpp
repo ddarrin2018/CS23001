@@ -11,85 +11,60 @@
 int main ()
 {
     {
+		//find char searching from chars position
         //------------------------------------------------------
         // SETUP FIXTURE
-        String  str(X);
+		String  str("abcabc");
 
         // TEST
-        RESULT_TYPE result = str.OP();
+        int result = str.findchar(0, 'a');
 
         // VERIFY
-        assert(str    == X);
-        assert(result == X);
+        assert(str    == "abcabc");
+        assert(result == 0);
     }
 
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
+	{
+		//find a char searching from befor its position
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String  str("abcabc");
 
-        // TEST
-        RESULT_TYPE result = str.OP();
+		// TEST
+		int result = str.findchar(1, 'a');
 
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
+		// VERIFY
+		assert(str == "abcabc");
+		assert(result == 3);
+	}
+  
+	{
+		//find a char searching past its position
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String  str("abcabc");
 
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
+		// TEST
+		int result = str.findchar(4, 'a');
 
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    // ADD ADDITIONAL TESTS AS NECESSARY
+		// VERIFY
+		assert(str == "abcabc");
+		assert(result == -1);
+	}
     
-    std::cout << "Done testing XXX." << std::endl;
+	{
+		//find a char that isn't in string
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String  str("abcabc");
+
+		// TEST
+		int result = str.findchar(0, 'z');
+
+		// VERIFY
+		assert(str == "abcabc");
+		assert(result == -1);
+	}
+    std::cout << "Done testing findchar()." << std::endl;
 }
 
