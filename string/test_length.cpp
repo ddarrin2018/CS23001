@@ -1,6 +1,6 @@
 //  String class test program
 //
-//  Tests: XXX
+//  Tests: length member function
 //
 
 #include "string.hpp"
@@ -13,83 +13,53 @@ int main ()
     {
         //------------------------------------------------------
         // SETUP FIXTURE
-        String  str(X);
+        String  str("abc");
 
         // TEST
-        RESULT_TYPE result = str.OP();
+        int result = str.length();
 
         // VERIFY
-        assert(str    == X);
-        assert(result == X);
+        assert(str  == "abc");
+        assert(result == 3);
     }
 
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
+	{
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String  str("");
 
-        // TEST
-        RESULT_TYPE result = str.OP();
+		// TEST
+		int result = str.length();
 
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
+		// VERIFY
+		assert(str == "");
+		assert(result == 0);
+	}
 
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
+	{	
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String  str('a');
 
-        // TEST
-        RESULT_TYPE result = str.OP();
+		// TEST
+		int result = str.length();
 
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
+		// VERIFY
+		assert(str == 'a');
+		assert(result == 1);
+	}
+	{
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String  str;
 
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
+		// TEST
+		int result = str.length();
 
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    // ADD ADDITIONAL TESTS AS NECESSARY
-    
-    std::cout << "Done testing XXX." << std::endl;
+		// VERIFY
+		assert(str == "");
+		assert(result == 0);
+	}
+	std::cout << "Done testing length()." << std::endl;
 }
 
