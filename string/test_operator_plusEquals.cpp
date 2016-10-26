@@ -1,6 +1,6 @@
 //  String class test program
 //
-//  Tests: XXX
+//  Tests:  String& operator+=    (String)
 //
 
 #include "string.hpp"
@@ -11,85 +11,67 @@
 int main ()
 {
     {
+		//empty String += String
         //------------------------------------------------------
         // SETUP FIXTURE
-        String  str(X);
+        String str1;
+		String str2("def");
 
         // TEST
-        RESULT_TYPE result = str.OP();
+        String result = str1.operator+=(str2);
 
         // VERIFY
-        assert(str    == X);
-        assert(result == X);
+        assert(str1 == "def");
+		assert(str2 == "def");
+        assert(result == "def");
     }
+	{
+		//String += empty String
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str1("abc");
+		String str2;
 
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
+		// TEST
+		String result = str1.operator+=(str2);
 
-        // TEST
-        RESULT_TYPE result = str.OP();
+		// VERIFY
+		assert(str1 == "abc");
+		assert(str2 == "");
+		assert(result == "abc");
+	}
+   
+	{
+		//String += String
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str1("abc");
+		String str2("def");
 
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
+		// TEST
+		String result = str1.operator+=(str2);
 
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
+		// VERIFY
+		assert(str1 == "abcdef");
+		assert(str2 == "def");
+		assert(result == "abcdef");
+	}
 
-        // TEST
-        RESULT_TYPE result = str.OP();
+	{
+		//empty String += empty String
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str1;
+		String str2;
 
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
+		// TEST
+		String result = str1.operator+=(str2);
 
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    {
-        //------------------------------------------------------
-        // SETUP FIXTURE
-        String  str(X);
-
-        // TEST
-        RESULT_TYPE result = str.OP();
-
-        // VERIFY
-        assert(str    == X);
-        assert(result == X);
-    }
-
-    // ADD ADDITIONAL TESTS AS NECESSARY
-    
-    std::cout << "Done testing XXX." << std::endl;
+		// VERIFY
+		assert(str1 == "");
+		assert(str2 == "");
+		assert(result == "");
+	}
+    std::cout << "Done testing operator+=." << std::endl;
 }
 
