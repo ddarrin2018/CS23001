@@ -1,6 +1,6 @@
 //  String class test program
 //
-//  Tests: char array + String
+//  Tests: char array + char
 //
 
 #include "string.hpp"
@@ -8,12 +8,9 @@
 #include <iostream>
 
 //===========================================================================
-int main ()
+int main()
 {
-	{
-		
-		
-	}
+	
 	{
 		//charArray plus empty String
 		//------------------------------------------------------
@@ -22,10 +19,10 @@ int main ()
 		String str;
 
 		// TEST
-		String result = a + str; 
+		String result = a + str;
 
 		// VERIFY
-		assert((a[0] == 'a') && (a[1]=='b') && (a[2] == 'c') && (a[3] == 0));
+		assert((a[0] == 'a') && (a[1] == 'b') && (a[2] == 'c') && (a[3] == 0));
 		assert(str == "");
 		assert(result == "abc");
 	}
@@ -50,7 +47,7 @@ int main ()
 		//empty charArray plus String 
 		//------------------------------------------------------
 		// SETUP FIXTURE
-		char a[5] = {0};
+		char a[5] = { 0 };
 		String str("def");
 
 		// TEST
@@ -66,7 +63,7 @@ int main ()
 		//"empty" chara array and String
 		//------------------------------------------------------
 		// SETUP FIXTURE
-		char a[] = {0};
+		char a[] = { 0 };
 		String str("");
 
 		// TEST

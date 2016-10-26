@@ -1,6 +1,6 @@
 //  String class test program
 //
-//  Tests: char array + char
+//  Tests: char array + String
 //
 
 #include "string.hpp"
@@ -8,77 +8,58 @@
 #include <iostream>
 
 //===========================================================================
-int main ()
+int main()
 {
-	{
-		
-		
-	}
+
 	{
 		//charArray plus empty String
 		//------------------------------------------------------
 		// SETUP FIXTURE
-		char a[] = { 'a','b', 'c', '\0' };
+		char ch = '\0';
 		String str;
 
 		// TEST
-		String result = a + str; 
+		String result = ch + str;
 
 		// VERIFY
-		assert((a[0] == 'a') && (a[1]=='b') && (a[2] == 'c') && (a[3] == 0));
-		assert(str == "");
-		assert(result == "abc");
-	}
-
-	{
-		//charArray plus String 
-		//------------------------------------------------------
-		// SETUP FIXTURE
-		char a[] = { 'a','b', 'c', '\0' };
-		String str("def");
-
-		// TEST
-		String result = a + str;
-
-		// VERIFY
-		assert((a[0] == 'a') && (a[1] == 'b') && (a[2] == 'c') && (a[3] == 0));
-		assert(str == "def");
-		assert(result == "abcdef");
-	}
-
-	{
-		//empty charArray plus String 
-		//------------------------------------------------------
-		// SETUP FIXTURE
-		char a[5] = {0};
-		String str("def");
-
-		// TEST
-		String result = a + str;
-
-		// VERIFY
-		assert(a[0] == 0);
-		assert(str == "def");
-		assert(result == "def");
-	}
-
-	{
-		//"empty" chara array and String
-		//------------------------------------------------------
-		// SETUP FIXTURE
-		char a[] = {0};
-		String str("");
-
-		// TEST
-		String result = a + str;
-
-		// VERIFY
-		assert(a[0] == 0);
+		assert(ch == '\0');
 		assert(str == "");
 		assert(result == "");
 	}
 
-	std::cout << "Done testing concatination charArray plus String" << std::endl;
+	{
+		//charArray plus empty String
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		char ch = 'a';
+		String str("bc");
+
+		// TEST
+		String result = ch + str;
+
+		// VERIFY
+		assert(ch == 'a');
+		assert(str == "bc");
+		assert(result == "abc");
+	}
+
+	{
+		//charArray plus empty String
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		char ch = 'a';
+		String str("");
+
+		// TEST
+		String result = ch + str;
+
+		// VERIFY
+		assert(ch == 'a');
+		assert(str == "");
+		assert(result == "a");
+	}
+	
+	std::cout << "Done testing char plus String" << std::endl;
 
 }
 
