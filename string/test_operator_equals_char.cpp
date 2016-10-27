@@ -57,6 +57,7 @@ int main()
 		// Test
 		bool result = (a == str1);
 		assert(a == str1);
+
 		// Verify
 		std::cout << str1;
 		std::cout << (result ? " == " : " != ");
@@ -89,6 +90,6 @@ int main()
 
 	// ADD ADDITIONAL TESTS AS NECESSARY
 
-	std::cout << "Done testing operator==" << std::endl;
+	std::cout << "Done testing operator== char" << std::endl;
 }
 

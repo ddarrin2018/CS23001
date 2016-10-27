@@ -89,6 +89,6 @@ int main()
 	
 	// ADD ADDITIONAL TESTS AS NECESSARY
 
-	std::cout << "Done testing operator==" << std::endl;
+	std::cout << "Done testing operator== charArray" << std::endl;
 }
 
