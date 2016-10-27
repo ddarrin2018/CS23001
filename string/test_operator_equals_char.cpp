@@ -1,6 +1,6 @@
 //  String class test program
 //
-//  Tests: bool    operator==    (const String&)  const;
+//  Tests: bool    operator==      (const char,  const String&);
 //
 
 #include "string.hpp"
@@ -15,14 +15,15 @@ int main()
 
 		// Setup
 		String str1("abc");
-		String str2("a");
+		char a = 'a';
 
 		// Test
-		assert(!(str1==str2));
+		bool result = (a == str1);
+		assert(!(a == str1));
 		// Verify
 		std::cout << str1;
-		std::cout << " != ";
-		std::cout << str2;
+		std::cout << (result ? "==" : " != ");
+		std::cout << a;
 		std::cout << std::endl;
 
 	}
@@ -32,14 +33,16 @@ int main()
 
 		// Setup
 		String str1("a");
-		String str2("abc");
+		char a = 'a';
 
 		// Test
-		assert(!(str1 == str2));
+		bool result = (a == str1);
+		assert(a == str1);
+
 		// Verify
 		std::cout << str1;
-		std::cout << " != ";
-		std::cout << str2;
+		std::cout << (result ? " == " : " != ");
+		std::cout << a;
 		std::cout << std::endl;
 
 	}
@@ -48,20 +51,41 @@ int main()
 
 
 		// Setup
-		String str1("abc");
-		String str2("abc");
+		String str1;
+		char a = '\0';
 
 		// Test
-		assert(str1 == str2);
+		bool result = (a == str1);
+		assert(a == str1);
 		// Verify
 		std::cout << str1;
-		std::cout << " == ";
-		std::cout << str2;
+		std::cout << (result ? " == " : " != ");
+		std::cout << a;
 		std::cout << std::endl;
+
+
 
 	}
 
+	{
 
+
+		// Setup
+		String str1;
+		char a = 'c';
+
+		// Test
+		bool result = (a == str1);
+		assert(!(a == str1));
+		// Verify
+		std::cout << str1;
+		std::cout << (result ? " == " : " != ");
+		std::cout << a;
+		std::cout << std::endl;
+
+
+
+	}
 
 	// ADD ADDITIONAL TESTS AS NECESSARY
 
