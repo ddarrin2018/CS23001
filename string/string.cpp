@@ -113,7 +113,7 @@ bool String::operator==(const String& rhs)  const {
 bool String::operator<(const String& rhs) const {
 	//check which is longer
 	int conditional_length;
-	if (length() >= rhs.length()) {
+	if (length() <= rhs.length()) {
 		conditional_length = length();
 	}
 	//rhs.length()>lenght()
@@ -127,7 +127,9 @@ bool String::operator<(const String& rhs) const {
 			return true;
 		}
 	}
-
+	if (conditional_length == 0) {
+		return (str[0] < rhs[0]);
+	}
 	return false;
 }
 

@@ -58,10 +58,10 @@ private:
 
 
 String  operator+       (const char[],  const String&);
-String  operator+       (char,          const String&);//why isn't char const?
+String  operator+       (char,          const String&);
 bool    operator==      (const char[],  const String&);
 bool    operator==      (char,          const String&);
-bool    operator<       (const char[],  const String&);
+bool    operator<       (const char[],  const String&);//<-
 bool    operator<       (char,          const String&);
 bool    operator<=      (const String&, const String&);
 bool    operator!=      (const String&, const String&);
