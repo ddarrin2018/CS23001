@@ -99,6 +99,28 @@ int main ()
 
 	}
 
+	{
+		//
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str1("b");
+		char ch = 'a';
+
+		// TEST
+		bool result = operator<(ch, str1);
+
+		// VERIFY
+		assert(str1 == "b");
+		assert(ch == 'a');
+		assert(result == true);
+
+		std::cout << ch;
+		std::cout << (result ? (" < ") : (" !< "));
+		std::cout << str1;
+		std::cout << std::endl;
+
+	}
+
     std::cout << "Done testing char < String" << std::endl;
 }
 

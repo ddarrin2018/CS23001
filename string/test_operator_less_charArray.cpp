@@ -1,6 +1,6 @@
 //  String class test program
 //
-//  Tests: bool    operator<     (const String&)  const;
+//  Tests: bool    operator<       (const char[],  const String&);
 //
 
 #include "string.hpp"
@@ -15,63 +15,65 @@ int main ()
 		//------------------------------------------------------
 		// SETUP FIXTURE
 		String str1;
-		String str2;
+		char a[] = "";
 
 		// TEST
-		bool result = str1.operator<(str2);
+		bool result = operator<(a,str1);
 
 		// VERIFY
 		assert(str1 == "");
-		assert(str2 == "");
+		assert(a[0] == '\0');
 		assert(result == false);
 
-		std::cout << str1;
+		std::cout << a;
 		std::cout << (result ? (" < ") : (" !< "));
-		std::cout << str2;
+		std::cout << str1;
 		std::cout << std::endl;
 
 	}
 
 	{
-		//empty String < String
+		//empty String < empty String
 		//------------------------------------------------------
 		// SETUP FIXTURE
 		String str1;
-		String str2("a");
+		char a[] = "a";
 
 		// TEST
-		bool result = str1.operator<(str2);
+		bool result = operator<(a, str1);
 
 		// VERIFY
 		assert(str1 == "");
-		assert(str2 == "a");
-		assert(result == true);
+		assert((a[0] == 'a' && a[1] == '\0'));
+		assert(result == false);
 
-		std::cout << str1;
+		std::cout << a;
 		std::cout << (result ? (" < ") : (" !< "));
-		std::cout << str2;
+		std::cout << str1;
 		std::cout << std::endl;
+
 	}
 
-	{
-		//String < empty String
+{
+		//empty String < empty String
 		//------------------------------------------------------
 		// SETUP FIXTURE
 		String str1("a");
-		String str2;
+		char a[] = "";
 
 		// TEST
-		bool result = str1.operator<(str2);
+		bool result = operator<(a, str1);
 
 		// VERIFY
 		assert(str1 == "a");
-		assert(str2 == "");
-		assert(result == false);
+		assert(a[0] == '\0');
+		assert(result == true);
 
-		std::cout << str1;
+		std::cout << a;
 		std::cout << (result ? (" < ") : (" !< "));
-		std::cout << str2;
+		std::cout << str1;
 		std::cout << std::endl;
+
 	}
 
 	
@@ -81,66 +83,70 @@ int main ()
 		//------------------------------------------------------
 		// SETUP FIXTURE
 		String str1("alligator");
-		String str2("b");
+		char a [] = "b";
 
 		// TEST
-		bool result = str1.operator<(str2);
+		bool result = operator<(a, str1);
 
 		// VERIFY
 		assert(str1 == "alligator");
-		assert(str2 == "b");
-		assert(result == true);
+		assert(a[0] == 'b' && a[1] == '\0');
+		assert(result == false);
 
-		std::cout << str1;
+		std::cout << a;
 		std::cout << (result ? (" < ") : (" !< "));
-		std::cout << str2;
+		std::cout << str1;
 		std::cout << std::endl;
 	}
 
 	{
-		//equivalents Strings
+		//empty String < empty String
 		//------------------------------------------------------
 		// SETUP FIXTURE
 		String str1("abc");
-		String str2("abc");
+		char a[] = "abc";
 
 		// TEST
-		bool result = str1.operator<(str2);
+		bool result = operator<(a, str1);
 
 		// VERIFY
 		assert(str1 == "abc");
-		assert(str2 == "abc");
+		assert(a[0] == 'a' && a[1] == 'b' && a[2] == 'c' && a[3] == '\0');
 		assert(result == false);
 
-		std::cout << str1;
+		std::cout << a;
 		std::cout << (result ? (" < ") : (" !< "));
-		std::cout << str2;
+		std::cout << str1;
 		std::cout << std::endl;
+
+
 	}
 
 	{
-		//equivalents Strings
+		//empty String < empty String
 		//------------------------------------------------------
 		// SETUP FIXTURE
-		String str1("ABC");
-		String str2("abc");
+		String str1("abc");
+		char a[] = "ABC";
 
 		// TEST
-		bool result = str1.operator<(str2);
+		bool result = operator<(a, str1);
 
 		// VERIFY
-		assert(str1 == "ABC");
-		assert(str2 == "abc");
+		assert(str1 == "abc");
+		assert(a[0] == 'A' && a[1] == 'B' && a[2] == 'C' && a[3] == '\0');
 		assert(result == true);
 
-		std::cout << str1;
+		std::cout << a;
 		std::cout << (result ? (" < ") : (" !< "));
-		std::cout << str2;
+		std::cout << str1;
 		std::cout << std::endl;
+
+
 	}
 
 
 
-    std::cout << "Done testing String < String" << std::endl;
+    std::cout << "Done testing char[] < String" << std::endl;
 }
 
