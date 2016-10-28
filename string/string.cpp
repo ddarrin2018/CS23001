@@ -128,7 +128,7 @@ bool String::operator<(const String& rhs) const {
 		}
 	}
 	if (conditional_length == 0) {
-		return (str[0] < rhs[0]);
+		return (str[0] < rhs.str[0]);
 	}
 	return false;
 }
