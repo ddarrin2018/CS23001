@@ -15,11 +15,12 @@ OPTIONS = -g -Wall -W -Wunused -Wuninitialized -Wshadow -std=c++11
 
 # Names of your test files - add them in as you build them.
 # Names must start with "test_"
-MYTESTS = test_default_ctor test_ctor_charArray 
+MYTESTS = test_default_ctor test_ctor_char_array test_ctor_char test_length test_capacity test_plus_method test_plus_char_array test_operator_plus_equals test_operator_equals test_operator_less test_substr test_findchar test_findstr test_plus_char test_operator_equals_char test_operator_equals_char_array test_operator_less_char test_operator_less_char_array test_operator_greater test_operator_greater_or_equal test_operator_less_or_equal test_operator_not_equal
+
 
 
 # Names of test oracle files 
-CTOR = testoracle_ctor_default testoracle_ctor_char testoracle_ctor_charArray_int testoracle_ctor_int  testoracle_ctor_charArray
+CTOR = testoracle_ctor_default testoracle_ctor_char testoracle_ctor_charArray_int testoracle_ctor_int  testoracle_ctor_charArray 
 REL  = testoracle_equal testoracle_lessThan
 COPY = testoracle_ctor_copy testoracle_assign
 OPS  = testoracle_concat
@@ -46,7 +47,7 @@ string.o: string.hpp string.cpp
 	$(CPP) -c $(OPTIONS) string.cpp -o string.o
 
 string: string.o
-	
+
 
 ###############################################################
 # Run all of your tests
@@ -56,12 +57,30 @@ string: string.o
 #
 tests: $(MYTESTS)
 	./test_default_ctor
-	./test_c_str_ctor
-    
+
     #ADD YOUR TESTS HERE ***************
-    
-    
-    
+	./test_ctor_char_array
+	./test_ctor_char
+	./test_length
+	./test_capacity
+	./test_plus_method
+	./test_plus_char_array
+	./test_plus_char
+	./test_operator_plus_equals
+	./test_operator_equals
+	./test_operator_equals_char_array
+	./test_operator_equals_char
+	./test_operator_less
+	./test_operator_less_char
+	./test_operator_less_char_array
+	./test_substr
+	./test_findchar
+	./test_findstr
+	./test_operator_greater
+	./test_operator_greater_or_equal
+	./test_operator_less_or_equal
+	./test_operator_not_equal
+
 ###############################################################
 # Compile all test programs
 #
