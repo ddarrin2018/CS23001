@@ -1,6 +1,6 @@
 //  String class test program
 //
-//  Tests: bool    operator<     (const String&)  const;
+//  bool    operator>=      (const String&, const String&);
 //
 
 #include "string.hpp"
@@ -8,7 +8,7 @@
 #include <iostream>
 
 //===========================================================================
-int main ()
+int main()
 {
 	{
 		//empty String < empty String
@@ -18,7 +18,7 @@ int main ()
 		String str2;
 
 		// TEST
-		bool result = str1.operator<(str2);
+		bool result = operator>(str1, str2);
 
 		// VERIFY
 		assert(str1 == "");
@@ -26,7 +26,7 @@ int main ()
 		assert(result == false);
 
 		std::cout << str1;
-		std::cout << (result ? (" < ") : (" !< "));
+		std::cout << (result ? (" > ") : (" !< "));
 		std::cout << str2;
 		std::cout << std::endl;
 
@@ -40,15 +40,15 @@ int main ()
 		String str2("a");
 
 		// TEST
-		bool result = str1.operator<(str2);
+		bool result = operator>(str1, str2);
 
 		// VERIFY
 		assert(str1 == "");
 		assert(str2 == "a");
-		assert(result == true);
+		assert(result == false);
 
 		std::cout << str1;
-		std::cout << (result ? (" < ") : (" !< "));
+		std::cout << (result ? (" > ") : (" <= "));
 		std::cout << str2;
 		std::cout << std::endl;
 	}
@@ -61,21 +61,21 @@ int main ()
 		String str2;
 
 		// TEST
-		bool result = str1.operator<(str2);
+		bool result = operator>(str1, str2);
 
 		// VERIFY
 		assert(str1 == "a");
 		assert(str2 == "");
-		assert(result == false);
+		assert(result == true);
 
 		std::cout << str1;
-		std::cout << (result ? (" < ") : (" !< "));
+		std::cout << (result ? (" > ") : (" <= "));
 		std::cout << str2;
 		std::cout << std::endl;
 	}
 
-	
-  
+
+
 	{
 		//equivalents Strings
 		//------------------------------------------------------
@@ -84,15 +84,15 @@ int main ()
 		String str2("b");
 
 		// TEST
-		bool result = str1.operator<(str2);
+		bool result = operator>(str1, str2);
 
 		// VERIFY
 		assert(str1 == "alligator");
 		assert(str2 == "b");
-		assert(result == true);
+		assert(result == false);
 
 		std::cout << str1;
-		std::cout << (result ? (" < ") : (" !< "));
+		std::cout << (result ? (" > ") : (" <= "));
 		std::cout << str2;
 		std::cout << std::endl;
 	}
@@ -105,7 +105,7 @@ int main ()
 		String str2("abc");
 
 		// TEST
-		bool result = str1.operator<(str2);
+		bool result = operator>(str1, str2);
 
 		// VERIFY
 		assert(str1 == "abc");
@@ -113,7 +113,7 @@ int main ()
 		assert(result == false);
 
 		std::cout << str1;
-		std::cout << (result ? (" < ") : (" !< "));
+		std::cout << (result ? (" > ") : (" <= "));
 		std::cout << str2;
 		std::cout << std::endl;
 	}
@@ -126,21 +126,39 @@ int main ()
 		String str2("abc");
 
 		// TEST
-		bool result = str1.operator<(str2);
+		bool result = operator>(str1, str2);
 
 		// VERIFY
 		assert(str1 == "ABC");
 		assert(str2 == "abc");
-		assert(result == true);
+		assert(result == false);
 
 		std::cout << str1;
-		std::cout << (result ? (" < ") : (" !< "));
+		std::cout << (result ? (" > ") : (" <= "));
 		std::cout << str2;
 		std::cout << std::endl;
 	}
+	{
+		//equivalents Strings
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str2("ABC");
+		String str1("abc");
 
+		// TEST
+		bool result = operator>(str1, str2);
 
+		// VERIFY
+		assert(str2 == "ABC");
+		assert(str1 == "abc");
+		assert(result == true);
 
-    std::cout << "Done testing String < String" << std::endl;
+		std::cout << str1;
+		std::cout << (result ? (" > ") : (" <= "));
+		std::cout << str2;
+
+	}
+
+	std::cout<<std::endl << "Done testing String > String" << std::endl;
 }
 

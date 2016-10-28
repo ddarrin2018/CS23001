@@ -1,6 +1,6 @@
 //  String class test program
 //
-//  Tests: bool    operator==      (const char[],  const String&);
+//  Tests:bool    operator<=      (const String&, const String&);
 //
 
 #include "string.hpp"
@@ -11,84 +11,142 @@
 int main()
 {
 	{
-
-
-		// Setup
-		String str1("abc");
-		char a[] = "def";
-
-		// Test
-		bool result = (a == str1);
-		assert(!(a==str1));
-		// Verify
-		std::cout << str1;
-		std::cout << (result ? "==": " != ");
-		std::cout << a;
-		std::cout << std::endl;
-
-	}
-	
-	{
-
-
-		// Setup
-		String str1("a");
-		char a[] = "abc";
-
-		// Test
-		bool result = (a == str1);
-		assert(!(a == str1));
-		
-		// Verify
-		std::cout << str1;
-		std::cout << (result ? "==" : " != ");
-		std::cout << a;
-		std::cout << std::endl;
-
-	}
-
-	{
-
-
-		// Setup
-		String str1("abc");
-		char a[] = "abc";
-
-		// Test
-		bool result = (a == str1);
-		assert(a == str1);
-		// Verify
-		std::cout << str1;
-		std::cout << (result ? " == " : " != ");
-		std::cout << a;
-		std::cout << std::endl;
-
-
-
-	}
-
-	{
-
-
-		// Setup
+		//empty String <= empty String
+		//------------------------------------------------------
+		// SETUP FIXTURE
 		String str1;
+		char a[] = "";
+
+		// TEST
+		bool result = operator<=(a, str1);
+
+		// VERIFY
+		assert(str1 == "");
+		assert(a[0] == '\0');
+		assert(result == true);
+
+		std::cout << a;
+		std::cout << (result ? (" <= ") : (" > "));
+		std::cout << str1;
+		std::cout << std::endl;
+
+	}
+
+	{
+		//empty String <= empty String
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str1;
+		char a[] = "a";
+
+		// TEST
+		bool result = operator<=(a, str1);
+
+		// VERIFY
+		assert(str1 == "");
+		assert((a[0] == 'a' && a[1] == '\0'));
+		assert(result == false);
+
+		std::cout << a;
+		std::cout << (result ? (" <= ") : (" > "));
+		std::cout << str1;
+		std::cout << std::endl;
+
+	}
+
+	{
+		//empty String <= empty String
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str1("a");
+		char a[] = "";
+
+		// TEST
+		bool result = operator<=(a, str1);
+
+		// VERIFY
+		assert(str1 == "a");
+		assert(a[0] == '\0');
+		assert(result == true);
+
+		std::cout << a;
+		std::cout << (result ? (" <= ") : (" > "));
+		std::cout << str1;
+		std::cout << std::endl;
+
+	}
+
+
+
+	{
+		//equivalents Strings
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str1("alligator");
+		char a[] = "b";
+
+		// TEST
+		bool result = operator<(a, str1);
+
+		// VERIFY
+		assert(str1 == "alligator");
+		assert(a[0] == 'b' && a[1] == '\0');
+		assert(result == false);
+
+		std::cout << a;
+		std::cout << (result ? (" <= ") : (" > "));
+		std::cout << str1;
+		std::cout << std::endl;
+	}
+
+	{
+		//empty String <= empty String
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str1("abc");
 		char a[] = "abc";
 
-		// Test
-		bool result = (a == str1);
-		assert(!(a == str1));
-		// Verify
-		std::cout << str1;
-		std::cout << (result ? " == " : " != ");
+		// TEST
+		bool result = operator<=(a, str1);
+
+		// VERIFY
+		assert(str1 == "abc");
+		assert(a[0] == 'a' && a[1] == 'b' && a[2] == 'c' && a[3] == '\0');
+		assert(result == true);
+
 		std::cout << a;
+		std::cout << (result ? (" <= ") : (" > "));
+		std::cout << str1;
 		std::cout << std::endl;
 
 
+	}
+
+	{
+		
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str1("abc");
+		char a[] = "ABC";
+
+		// TEST
+		bool result = operator<=(a, str1);
+
+		// VERIFY
+		assert(str1 == "abc");
+		assert(a[0] == 'A' && a[1] == 'B' && a[2] == 'C' && a[3] == '\0');
+		assert(result == true);
+
+		std::cout << a;
+		std::cout << (result ? (" <= ") : (" > "));
+		std::cout << str1;
+		std::cout << std::endl;
+
 
 	}
-	
-	// ADD ADDITIONAL TESTS AS NECESSARY
 
-	std::cout << "Done testing operator== charArray" << std::endl;
+
+
+	std::cout << "Done testing char[] <= String" << std::endl;
 }
 

@@ -1,6 +1,6 @@
 //  String class test program
 //
-//  Tests: bool    operator==      (const char[],  const String&);
+// bool    operator!=      (const String&, const String&);
 //
 
 #include "string.hpp"
@@ -12,37 +12,33 @@ int main()
 {
 	{
 
-
-		// Setup
+		// Setup 
 		String str1("abc");
-		char a[] = "def";
+		String str2("a");
 
 		// Test
-		bool result = (a == str1);
-		assert(!(a==str1));
+		assert(str1 != str2);
 		// Verify
 		std::cout << str1;
-		std::cout << (result ? "==": " != ");
-		std::cout << a;
+		std::cout << " != ";
+		std::cout << str2;
 		std::cout << std::endl;
 
 	}
-	
+
 	{
 
 
 		// Setup
 		String str1("a");
-		char a[] = "abc";
+		String str2("abc");
 
 		// Test
-		bool result = (a == str1);
-		assert(!(a == str1));
-		
+		assert(str1 != str2);
 		// Verify
 		std::cout << str1;
-		std::cout << (result ? "==" : " != ");
-		std::cout << a;
+		std::cout << " != ";
+		std::cout << str2;
 		std::cout << std::endl;
 
 	}
@@ -52,43 +48,22 @@ int main()
 
 		// Setup
 		String str1("abc");
-		char a[] = "abc";
+		String str2("abc");
 
 		// Test
-		bool result = (a == str1);
-		assert(a == str1);
+		assert(!(str1 != str2));
 		// Verify
 		std::cout << str1;
-		std::cout << (result ? " == " : " != ");
-		std::cout << a;
+		std::cout << " == ";
+		std::cout << str2;
 		std::cout << std::endl;
-
-
 
 	}
 
-	{
 
 
-		// Setup
-		String str1;
-		char a[] = "abc";
-
-		// Test
-		bool result = (a == str1);
-		assert(!(a == str1));
-		// Verify
-		std::cout << str1;
-		std::cout << (result ? " == " : " != ");
-		std::cout << a;
-		std::cout << std::endl;
-
-
-
-	}
-	
 	// ADD ADDITIONAL TESTS AS NECESSARY
 
-	std::cout << "Done testing operator== charArray" << std::endl;
+	std::cout << "Done testing operator!=" << std::endl;
 }
 
