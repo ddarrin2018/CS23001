@@ -233,31 +233,28 @@ void    String::resetCapacity(int n) {
 	}
 }
 
-
-bool String::operator<(const String& rhs) const {
-	//check which is longer
-	int conditional_length;
-	if (length() <= rhs.length()) {
-		conditional_length = length();
-	}
-	//rhs.length()>lenght()
-	else {
-		conditional_length = rhs.length();
-	}
-
-	//only loop up to the shortest tring
-	for (int i = 0; i < conditional_length; ++i) {
-		if (str[i] < rhs.str[i]) {
-			return true;
+bool String::operator<(const String& rhs)const {
+	//lhs string is assumed to be lessthan rhs
+	if (length() < rhs.length()) {
+		for (int i = 0; i < length(); ++i) {
+			if (str[i] > rhs[i]) {
+				return false;
+			}
 		}
+		return true; 
 	}
-	if (conditional_length == 0) {
-		return (str[0] < rhs.str[0]);
+	//length >= rhs.length
+	//lhs string is assumed to be greater than or equal to rhs
+	else {
+		for (int i = 0; i < rhs.length(); ++i) {
+			if (str[i] < rhs[i]) {
+				return true;
+			}
+			return false;
+		}
+
+
 	}
-	if (conditional_length < rhs.length()) {
-		return true;
-	}
-	return false; 
 }
 
 

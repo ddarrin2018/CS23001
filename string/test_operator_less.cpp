@@ -141,7 +141,7 @@ int main ()
 
 
 	{
-		//equivalents Strings
+		
 		//------------------------------------------------------
 		// SETUP FIXTURE
 		String str1("ab");
@@ -154,6 +154,27 @@ int main ()
 		assert(str1 == "ab");
 		assert(str2 == "abc");
 		assert(result == true);
+
+		std::cout << str1;
+		std::cout << (result ? (" < ") : (" !< "));
+		std::cout << str2;
+		std::cout << std::endl;
+	}
+
+	{
+		//equivalents Strings
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str1("d");
+		String str2("ab");
+
+		// TEST
+		bool result = str1.operator<(str2);
+
+		// VERIFY
+		assert(str1 == "d");
+		assert(str2 == "ab");
+		assert(result == false);
 
 		std::cout << str1;
 		std::cout << (result ? (" < ") : (" !< "));
