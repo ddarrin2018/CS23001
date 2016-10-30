@@ -16,14 +16,14 @@ int main()
 		//------------------------------------------------------
 		// SETUP FIXTURE
 		char a[] = "abc";
-		String str;
+		String str1;
 
 		// TEST
-		String result = operator+(a, str);
+		String result = operator+(a, str1);
 
 		// VERIFY
 		assert((a[0] == 'a') && (a[1] == 'b') && (a[2] == 'c') && (a[3] == '\0'));
-		assert(str == "");
+		assert(str1 == "");
 		assert(result == "abc");
 	}
 

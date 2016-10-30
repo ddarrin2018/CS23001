@@ -46,7 +46,7 @@ String::String(int n) {
 
 /*Same as a[] ?*/
 //String b(a.capcity(), a.str);  //A copy of string a.
-//if n > num of chars in char* then 
+//if n > num of chars in char* then ?
 String::String(int n, const char* a):String(n) {
 	//copies over elements of a?
 	for (int i = 0; i < length(); ++i) {
@@ -355,18 +355,15 @@ int    String::findchar(int start, char ch) const {
 
 String  operator+(const char* s_array, const String& s) {
 	//convert char array into a String object
-	String result(s_array);  
-	//concatinate the two 
-	result = result + s; 
-	return result; 
+	String converted_array(s_array);  
+	return (converted_array + s);
 }
 
 
 
 String  operator+ (char ch, const String& s) {
-	String result(ch); 
-	result += s; 
-	return result; 
+	String converted_ch(ch);
+	return(converted_ch + s);
 }
 
 

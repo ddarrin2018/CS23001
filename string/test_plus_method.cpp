@@ -18,7 +18,7 @@ int main ()
 		String str2;
 
         // TEST
-		String result = str1 + str2;
+		String result = str1.operator+(str2);
 
         // VERIFY
         assert(str1 == "");
@@ -34,7 +34,7 @@ int main ()
 		String str2('a');
 
 		// TEST
-		String result = str1 + str2;
+		String result = str1.operator+(str2);
 
 		// VERIFY
 		//assert(str1 == "");
@@ -49,7 +49,7 @@ int main ()
 		String str2;
 
 		// TEST
-		String result = str1 + str2;
+		String result = str1.operator+(str2);
 
 		// VERIFY
 		//assert(str1 == 'a');
@@ -64,7 +64,7 @@ int main ()
 		String str2('b');
 
 		// TEST
-		String result = str1 + str2;
+		String result = str1.operator+(str2);
 
 		// VERIFY
 		//assert(str1 == 'a');
@@ -79,7 +79,7 @@ int main ()
 		String str2;
 
 		// TEST
-		String result = str1 + str2;
+		String result = str1.operator+(str2);
 
 		// VERIFY
 		assert(str1 == "abc");
@@ -94,7 +94,7 @@ int main ()
 		String str2("abc");
 
 		// TEST
-		String result = str1 + str2;
+		String result = str1.operator+(str2);
 
 		// VERIFY
 		assert(str1 == "");
@@ -109,7 +109,7 @@ int main ()
 		String str2("def");
 
 		// TEST
-		String result = str1 + str2;
+		String result = str1.operator+(str2);
 
 		// VERIFY
 		assert(str1 == "abc");
