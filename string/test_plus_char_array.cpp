@@ -15,14 +15,14 @@ int main()
 		//charArray plus empty String
 		//------------------------------------------------------
 		// SETUP FIXTURE
-		char a[] = { 'a','b', 'c', '\0' };
+		char a[] = "abc";
 		String str;
 
 		// TEST
-		String result = a + str;
+		String result = operator+(a, str);
 
 		// VERIFY
-		assert((a[0] == 'a') && (a[1] == 'b') && (a[2] == 'c') && (a[3] == 0));
+		assert((a[0] == 'a') && (a[1] == 'b') && (a[2] == 'c') && (a[3] == '\0'));
 		assert(str == "");
 		assert(result == "abc");
 	}
@@ -31,7 +31,7 @@ int main()
 		//charArray plus String 
 		//------------------------------------------------------
 		// SETUP FIXTURE
-		char a[] = { 'a','b', 'c', '\0' };
+		char a[] = "abc";
 		String str("def");
 
 		// TEST

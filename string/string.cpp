@@ -254,7 +254,10 @@ bool String::operator<(const String& rhs) const {
 	if (conditional_length == 0) {
 		return (str[0] < rhs.str[0]);
 	}
-	return false;
+	if (conditional_length < rhs.length()) {
+		return true;
+	}
+	return false; 
 }
 
 
