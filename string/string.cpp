@@ -1,6 +1,6 @@
 /*Marianna Matousek
 *10/14/2016
-*string milestone1
+*string-mile1.cpp
 */
 
 #include "string.hpp"
@@ -133,6 +133,20 @@ bool String::operator<(const String& rhs) const {
 	return false;
 }
 
+std::ostream& operator<<(std::ostream& out, const String& rhs) { //This is a friend function.
+	out << rhs.str;
+	return out;
+}
+
+
+std::istream& operator >> (std::istream& in, String& rhs) {
+	char temp[500];
+	in >> temp;   //Skips leading whitespace and read until next whitespace.
+	rhs = String(temp);   //temp is null terminating 
+	return in;
+}
+
+/*
 //i feel like this is wrong:
 std::istream& operator >> (std::istream& in, String& rhs) {
 	char input[STRING_SIZE];
@@ -166,6 +180,8 @@ std::ostream& operator << (std::ostream& out, const String& rhs) {
 
 	return out;
 }
+
+*/
 
 //Also implement methods for sub string, find string, and find character.
 String String::substr(int start, int end)const {
