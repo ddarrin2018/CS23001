@@ -1,6 +1,6 @@
 /*Marianna Matousek
 *10/14/2016
-*string-mile1.cpp
+*string milestone1
 */
 
 #include "string.hpp"
@@ -133,20 +133,36 @@ bool String::operator<(const String& rhs) const {
 	return false;
 }
 
-
+//i feel like this is wrong:
 std::istream& operator >> (std::istream& in, String& rhs) {
-	char temp[STRING_SIZE];
-	in >> temp;
-	//calling a constructor on *this
-	//and sets right hand side equal
-	//to it?
-	rhs = String(temp);
+	char input[STRING_SIZE];
+	char ch;
+
+	in.get(ch);
+	int i = 0;
+	while (ch != '\0' && (!in.eof()) && i < (STRING_SIZE -1) && ch!= '\n') {
+		input[i] = ch;
+		in.get(ch);
+		++i;
+	}
+	input[i] = '\0';
+
+	rhs = String(input);
 
 	return in;
+
+
+	
 }
 
 std::ostream& operator << (std::ostream& out, const String& rhs) {
-	out << rhs.str;
+	for (int i = 0; i < rhs.length(); ++i) {
+		if (rhs.str[i] != 0) {
+			out << rhs.str[i];
+		}
+		
+	}
+
 
 	return out;
 }
