@@ -59,9 +59,9 @@ int main()
 		assert(a == str1);
 
 		// Verify
-		std::cout << str1;
+		std::cout << '"' << str1 << '"';
 		std::cout << (result ? " == " : " != ");
-		std::cout << a;
+		std::cout << "'" << a << "'"; 
 		std::cout << std::endl;
 
 
@@ -79,7 +79,7 @@ int main()
 		bool result = (a == str1);
 		assert(!(a == str1));
 		// Verify
-		std::cout << str1;
+		std::cout << '"' << str1 << '"';
 		std::cout << (result ? " == " : " != ");
 		std::cout << a;
 		std::cout << std::endl;
