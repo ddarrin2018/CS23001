@@ -249,10 +249,9 @@ bool String::operator<(const String& rhs)const {
 		for (int i = 0; i < rhs.length(); ++i) {
 			if (str[i] < rhs[i]) {
 				return true;
-			}
-			return false;
+			}	
 		}
-
+		return false;
 
 	}
 }
