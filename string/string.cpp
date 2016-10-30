@@ -50,7 +50,7 @@ String::String(int n) {
 String::String(int n, const char* a):String(n) {
 	//copies over elements of a?
 	for (int i = 0; i < length(); ++i) {
-		if (a[i] != '/0') {
+		if (a[i] != '\0') {
 			str[i] = a[i];
 		}
 	}
