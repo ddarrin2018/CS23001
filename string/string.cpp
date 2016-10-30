@@ -113,7 +113,7 @@ bool String::operator==(const String& rhs)  const {
 //Accessor/Modifier
 char& String::operator[](int i) {
 	assert(i >= 0);
-	assert(i <= length());
+	assert(i <= stringSize); //was <=length()
 	return str[i];
 }
 
