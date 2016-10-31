@@ -233,9 +233,19 @@ std::ostream& operator << (std::ostream& out, const String& rhs) {
 
 //resets capacity to int
 void    String::resetCapacity(int n) {
-	if (n > length()) {
-		*this = String(n, str);
+	char * new_array = new char[n+1]; 
+	int i = 0;
+	while (str[i] != 0) {
+		new_array[i] = str[i];
 	}
+	new_array[i] = '\0';
+	
+	stringSize = n + 1;
+	
+	delete[] str; 
+
+	str = new_array; 
+
 }
 
 bool String::operator<(const String& rhs)const {
