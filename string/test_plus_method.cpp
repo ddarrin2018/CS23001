@@ -116,6 +116,21 @@ int main ()
 		assert(str2 == "def");
 		assert(result == "abcdef");
 	}
+	{
+		//Big string plus big string
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String  str1("aaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbccccccccccccccccccccccddddddddddddddddddddddeeeeeeeeeeeeeeeeeeee");
+		String  str2("fffffffffffffffgggggggggggggggggghhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjjjjjjj");
+
+		// TEST
+		String result = str1.operator+(str2);
+
+		// VERIFY
+		assert(str1 == "aaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbccccccccccccccccccccccddddddddddddddddddddddeeeeeeeeeeeeeeeeeeee");
+		assert(str2 == "fffffffffffffffgggggggggggggggggghhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjjjjjjj");
+		assert(result == "aaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbccccccccccccccccccccccddddddddddddddddddddddeeeeeeeeeeeeeeeeeeeefffffffffffffffgggggggggggggggggghhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjjjjjjj");
+	}
 
     std::cout << "Done testing concatination String + String." << std::endl;
 }
