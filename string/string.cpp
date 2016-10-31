@@ -38,21 +38,25 @@ String::~String() {
 }
 
 //private sets capacity of string to n//
+//l=0 capacity = n
 String::String(int n) {
 	stringSize = n+1;
 	str = new char[stringSize];
-	str[n] = '\0';
+	str[0] = '\0';
 }
 
 /*Same as a[] ?*/
 //String b(a.capcity(), a.str);  //A copy of string a.
 //if n > num of chars in char* then ?
 String::String(int n, const char* a):String(n) {
+	int length_a = 0;
+	while (a[length_a] != 0) {
+		++length_a;
+	}
+	
 	//copies over elements of a?
-	for (int i = 0; i < length(); ++i) {
-		if (a[i] != '\0') {
+	for (int i = 0; i <= length_a; ++i) {
 			str[i] = a[i];
-		}
 	}
 	
 }
@@ -64,6 +68,7 @@ String::String(char ch):String(1) {
 	//String(1);
 
 	str[0] =  ch;
+	str[1] = '\0';
 }
 
 
