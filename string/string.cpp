@@ -75,24 +75,24 @@ String::String(char ch):String(1) {
 //String("abcd")
 String::String(const char * word){
 	//find length of word
-	int length = 0;
-	while (word[length] != 0) {
-		length++;
+	int word_length = 0;
+	while (word[word_length] != 0) {
+		word_length++;
 	}
 
 	
-	//*this = String(length, word); //<- doesn't work sometimes
+	//*this = String(word_length, word); //<- doesn't work sometimes
 
 	
-	stringSize = length+1;
+	stringSize = word_length+1;
 	str = new char[stringSize];
 
-	for (int i = 0; i < length; ++i) {
+	for (int i = 0; i < word_length; ++i) {
 		str[i] = word[i];
 	}
 
 	//null char
-	str[length] = 0; 
+	str[word_length] = 0; 
 	
 }
 
@@ -160,7 +160,7 @@ String  String::operator+(const String& rhs)const {
 	String result(length()+rhs.length(), str);
 
 	int offset = length(); 
-	for (int i = 0; i < rhs.length(); ++i) {
+	for (int i = 0; i <= rhs.length(); ++i) {
 		result[offset + i] = rhs.str[i];
    }
 	return result; 
@@ -173,7 +173,7 @@ String& String::operator+=    (String rhs) {
 	//and keep all the current char values where they are
 	*this = String(length() + rhs.length(), str);
 	
-	for (int i = 0; i < rhs.length(); ++i) {
+	for (int i = 0; i <= rhs.length(); ++i) {
 		str[offset + i] = rhs.str[i];
 	}
 	return *this; 
