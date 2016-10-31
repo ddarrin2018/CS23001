@@ -284,6 +284,7 @@ String String::substr(int start, int end)const {
 		result[j] = str[i];
 		++j;
 	}
+	result[j] = '\0';
 
 	return result;
 }
