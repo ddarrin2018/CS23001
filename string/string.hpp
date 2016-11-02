@@ -20,6 +20,7 @@
 #define CS23001_STRING_INTERFACE_HPP
 
 #include <iostream>
+#include <cassert>
 
 
 ////////////////////////////////////////////////////

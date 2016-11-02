@@ -5,7 +5,7 @@
 */
 
 #include "string.hpp"
-#include <cassert>
+
 //empty string
 String::String() {
 	stringSize = 1; 
