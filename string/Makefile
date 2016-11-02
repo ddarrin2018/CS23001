@@ -15,12 +15,12 @@ OPTIONS = -g -Wall -W -Wunused -Wuninitialized -Wshadow -std=c++11
 
 # Names of your test files - add them in as you build them.
 # Names must start with "test_"
-MYTESTS = test_default_ctor test_ctor_char_array test_ctor_char test_length test_capacity test_plus_method test_plus_char_array test_operator_plus_equals test_operator_equals test_operator_less test_substr test_findchar test_findstr test_plus_char test_operator_equals_char test_operator_equals_char_array test_operator_less_char test_operator_less_char_array test_operator_greater test_operator_greater_or_equal test_operator_less_or_equal test_operator_not_equal test_assignment test_copy test_swap test_subscript_const test_subscript
+MYTESTS = test_default_ctor test_ctor_char_array test_ctor_char test_length test_capacity test_plus_method test_plus_char_array test_operator_plus_equals test_operator_equals test_operator_less test_substr test_findchar test_findstr test_plus_char test_operator_equals_char test_operator_equals_char_array test_operator_less_char test_operator_less_char_array test_operator_greater test_operator_greater_or_equal test_operator_less_or_equal test_operator_not_equal
 
 
 
 # Names of test oracle files 
-CTOR = testoracle_ctor_default testoracle_ctor_char testoracle_ctor_charArray 
+CTOR = testoracle_ctor_default testoracle_ctor_char testoracle_ctor_charArray_int testoracle_ctor_int  testoracle_ctor_charArray 
 REL  = testoracle_equal testoracle_lessThan
 COPY = testoracle_ctor_copy testoracle_assign
 OPS  = testoracle_concat
@@ -80,11 +80,6 @@ tests: $(MYTESTS)
 	./test_operator_greater_or_equal
 	./test_operator_less_or_equal
 	./test_operator_not_equal
-	./test_assignment
-	./test_swap
-	./test_copy
-	./test_subscript
-	./test_subscript_const
 
 ###############################################################
 # Compile all test programs
@@ -105,6 +100,8 @@ oracle: $(CTOR) $(REL) $(COPY) $(OPS)
 	./testoracle_ctor_default
 	./testoracle_ctor_char 
 	./testoracle_ctor_charArray
+	./testoracle_ctor_int
+	./testoracle_ctor_charArray_int 
 	./testoracle_equal 
 	./testoracle_lessThan
 	./testoracle_ctor_copy 

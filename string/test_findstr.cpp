@@ -99,23 +99,6 @@ int main()
 		assert(str2 == "c");
 		assert(result == 2);
 	}
-
-	{
-		//find a character string
-		//------------------------------------------------------
-		// SETUP FIXTURE
-		String  str1("Can you find me in a very very long sentence?");
-		String str2("very");
-		// TEST
-		int result = str1.findstr(0, str2);
-
-		// VERIFY
-		assert(str1 == "Can you find me in a very very long sentence?");
-		assert(str2 == "very");
-		assert(result == 21);
-	}
-
-
 	std::cout << "Done testing findstr()." << std::endl;
 }
 

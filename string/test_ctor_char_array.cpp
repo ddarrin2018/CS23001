@@ -21,10 +21,7 @@ int main ()
 
         // VERIFY
         assert(str[0] == 'a');
-		assert(str[1] == '\0');
-		assert(str.length() == 1);
-		assert(str.capacity() == 1);
-
+	assert(str[1] == '\0');
 
     }
 
@@ -41,8 +38,6 @@ int main ()
 		assert(str[1] == 'b');
 		assert(str[2] == 'c');
 		assert(str[3] == '\0');
-		assert(str.length() == 3);
-		assert(str.capacity() == 3);
     }
 
     {
@@ -57,8 +52,6 @@ int main ()
 
       // VERIFY
       assert(str[0] == '\0');
-	  assert(str.length() == 0);
-	  assert(str.capacity() == 0);
     }
 
 	std::cout << "Done testing char array constructor." << std::endl;

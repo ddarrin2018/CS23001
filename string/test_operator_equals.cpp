@@ -60,22 +60,7 @@ int main()
 		std::cout << std::endl;
 
 	}
-	{
 
-
-		// Setup
-		String str1;
-		String str2;
-
-		// Test
-		assert(str1 == str2);
-		// Verify
-		std::cout << '"' << str1 << '"';
-		std::cout << " == ";
-		std::cout << '"' << str2 << '"';
-		std::cout << std::endl;
-
-	}
 
 
 	// ADD ADDITIONAL TESTS AS NECESSARY

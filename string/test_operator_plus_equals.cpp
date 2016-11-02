@@ -72,22 +72,6 @@ int main ()
 		assert(str2 == "");
 		assert(result == "");
 	}
-	{
-		//empty String += empty String
-		//------------------------------------------------------
-		// SETUP FIXTURE
-		String str1("aaaaaaaaaaaabbbbbbbbbbbbbbbcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc");
-		String str2("dddddddddddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefffffffffffffffffffffffffff");
-
-		// TEST
-		String result = str1.operator+=(str2);
-
-		// VERIFY
-		assert(str1 == "aaaaaaaaaaaabbbbbbbbbbbbbbbccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccdddddddddddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefffffffffffffffffffffffffff");
-		assert(str2 == "dddddddddddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefffffffffffffffffffffffffff");
-		assert(result == "aaaaaaaaaaaabbbbbbbbbbbbbbbccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccdddddddddddddddddddddeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefffffffffffffffffffffffffff");
-	}
-
     std::cout << "Done testing operator+=." << std::endl;
 }
 

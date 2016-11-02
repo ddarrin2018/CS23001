@@ -18,14 +18,13 @@ int main ()
 		String str2;
 
         // TEST
-		String result = str1.operator+(str2);
+		String result = str1 + str2;
 
         // VERIFY
         assert(str1 == "");
 		assert(str2 == "");
         assert(result == "");
     }
-	
 	{
 		//empty plus char
 		//------------------------------------------------------
@@ -34,11 +33,11 @@ int main ()
 		String str2('a');
 
 		// TEST
-		String result = str1.operator+(str2);
+		String result = str1 + str2;
 
 		// VERIFY
-		//assert(str1 == "");
-		//assert(str2 == 'a');
+		assert(str1 == "");
+		assert(str2 == 'a');
 		assert(result == "a");
 	}
 	{
@@ -49,11 +48,11 @@ int main ()
 		String str2;
 
 		// TEST
-		String result = str1.operator+(str2);
+		String result = str1 + str2;
 
 		// VERIFY
-		//assert(str1 == 'a');
-		//assert(str2 == "");
+		assert(str1 == 'a');
+		assert(str2 == "");
 		assert(result == "a");
 	}
 	{
@@ -64,11 +63,11 @@ int main ()
 		String str2('b');
 
 		// TEST
-		String result = str1.operator+(str2);
+		String result = str1 + str2;
 
 		// VERIFY
-		//assert(str1 == 'a');
-		//assert(str2 == 'b');
+		assert(str1 == 'a');
+		assert(str2 == 'b');
 		assert(result == "ab");
 	}
 	{
@@ -79,11 +78,11 @@ int main ()
 		String str2;
 
 		// TEST
-		String result = str1.operator+(str2);
+		String result = str1 + str2;
 
 		// VERIFY
 		assert(str1 == "abc");
-		//assert(str2 == "");
+		assert(str2 == "");
 		assert(result == "abc");
 	}
 	{
@@ -94,7 +93,7 @@ int main ()
 		String str2("abc");
 
 		// TEST
-		String result = str1.operator+(str2);
+		String result = str1 + str2;
 
 		// VERIFY
 		assert(str1 == "");
@@ -109,27 +108,12 @@ int main ()
 		String str2("def");
 
 		// TEST
-		String result = str1.operator+(str2);
+		String result = str1 + str2;
 
 		// VERIFY
 		assert(str1 == "abc");
 		assert(str2 == "def");
 		assert(result == "abcdef");
-	}
-	{
-		//Big string plus big string
-		//------------------------------------------------------
-		// SETUP FIXTURE
-		String  str1("aaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbccccccccccccccccccccccddddddddddddddddddddddeeeeeeeeeeeeeeeeeeee");
-		String  str2("fffffffffffffffgggggggggggggggggghhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjjjjjjj");
-
-		// TEST
-		String result = str1.operator+(str2);
-
-		// VERIFY
-		assert(str1 == "aaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbccccccccccccccccccccccddddddddddddddddddddddeeeeeeeeeeeeeeeeeeee");
-		assert(str2 == "fffffffffffffffgggggggggggggggggghhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjjjjjjj");
-		assert(result == "aaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbccccccccccccccccccccccddddddddddddddddddddddeeeeeeeeeeeeeeeeeeeefffffffffffffffgggggggggggggggggghhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjjjjjjj");
 	}
 
     std::cout << "Done testing concatination String + String." << std::endl;

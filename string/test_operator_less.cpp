@@ -8,7 +8,7 @@
 #include <iostream>
 
 //===========================================================================
-int main ()
+int main()
 {
 	{
 		//empty String < empty String
@@ -25,9 +25,9 @@ int main ()
 		assert(str2 == "");
 		assert(result == false);
 
-		std::cout << str1;
+		std::cout << '"'<< str1 << '"';
 		std::cout << (result ? (" < ") : (" !< "));
-		std::cout << str2;
+		std::cout << '"' << str2 << '"';
 		std::cout << std::endl;
 
 	}
@@ -47,7 +47,7 @@ int main ()
 		assert(str2 == "a");
 		assert(result == true);
 
-		std::cout << str1;
+		std::cout << '"' <<  str1 << '"';
 		std::cout << (result ? (" < ") : (" !< "));
 		std::cout << str2;
 		std::cout << std::endl;
@@ -70,12 +70,12 @@ int main ()
 
 		std::cout << str1;
 		std::cout << (result ? (" < ") : (" !< "));
-		std::cout << str2;
+		std::cout << '"'  << str2 << '"';
 		std::cout << std::endl;
 	}
 
-	
-  
+
+
 	{
 		//equivalents Strings
 		//------------------------------------------------------
@@ -141,7 +141,7 @@ int main ()
 
 
 	{
-		
+
 		//------------------------------------------------------
 		// SETUP FIXTURE
 		String str1("ab");
@@ -182,6 +182,6 @@ int main ()
 		std::cout << std::endl;
 	}
 
-    std::cout << "Done testing String < String" << std::endl;
+	std::cout << "Done testing String < String" << std::endl;
 }
 

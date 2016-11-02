@@ -25,9 +25,9 @@ int main()
 		assert(str2 == "");
 		assert(result == false);
 
-		std::cout << '"' << str1 << '"';
-		std::cout << (result ? (" > ") : (" <= "));
-		std::cout << '"' << str2 << '"';
+		std::cout << str1;
+		std::cout << (result ? (" > ") : (" !< "));
+		std::cout << str2;
 		std::cout << std::endl;
 
 	}
@@ -47,7 +47,7 @@ int main()
 		assert(str2 == "a");
 		assert(result == false);
 
-		std::cout << '"' << str1 << '"';
+		std::cout << str1;
 		std::cout << (result ? (" > ") : (" <= "));
 		std::cout << str2;
 		std::cout << std::endl;
@@ -70,7 +70,7 @@ int main()
 
 		std::cout << str1;
 		std::cout << (result ? (" > ") : (" <= "));
-		std::cout << '"' << str2 << '"';
+		std::cout << str2;
 		std::cout << std::endl;
 	}
 
