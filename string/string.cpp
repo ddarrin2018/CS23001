@@ -127,9 +127,9 @@ bool String::operator<(const String& rhs)const {
 			if (str[i] < rhs[i]) {
 				return true;
 			}
-			return false;
+			
 		}
-
+		return false;
 
 	}
 }
