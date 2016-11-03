@@ -1,5 +1,5 @@
 /*Marianna Matousek
-*10/14/2016
+*11/03/2016
 *string.cpp
 *milestone 3
 */
