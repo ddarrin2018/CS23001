@@ -1,18 +1,18 @@
 /*Marianna Matousek
-*11/2/2016
+*10/14/2016
 *string.cpp
 *milestone 3
 */
 
 #include "string.hpp"
-#include <cassert>
+
 //empty string
 String::String() {
-	stringSize = 1; 
+	stringSize = 1;
 
 	//allocates memory for one element
-	str = new char[1]; 
-	
+	str = new char[1];
+
 	//puts an null char at the elocated element
 	str[0] = '\0';//same as *str = '\0' ? 
 }
@@ -34,61 +34,66 @@ int String::capacity() const {
 
 //Destructor
 String::~String() {
-	delete [] str; 
+	delete[] str;
 }
 
 //private sets capacity of string to n//
+//l=0 capacity = n
 String::String(int n) {
-	stringSize = n+1;
+	stringSize = n + 1;
 	str = new char[stringSize];
-	str[n] = '\0';
+	str[0] = '\0';
 }
 
 /*Same as a[] ?*/
 //String b(a.capcity(), a.str);  //A copy of string a.
-//if n > num of chars in char* then 
-String::String(int n, const char* a):String(n) {
-	//copies over elements of a?
-	for (int i = 0; i < length(); ++i) {
-		if (a[i] != '/0') {
-			str[i] = a[i];
-		}
+//if n > num of chars in char* then ?
+String::String(int n, const char* a) :String(n) {
+	int length_a = 0;
+	while (a[length_a] != 0) {
+		++length_a;
 	}
-	
+
+	//copies over elements of a?
+	for (int i = 0; i <= length_a; ++i) {
+		str[i] = a[i];
+	}
+
 }
 
 //String('x')
-String::String(char ch):String(1) {
+String::String(char ch) :String(1) {
 	//sets capacity/length
 	//puts null at pos 1
 	//String(1);
 
-	str[0] =  ch;
+	str[0] = ch;
+	str[1] = '\0';
 }
 
 
 //String("abcd")
-String::String(const char * word){
+String::String(const char * word) {
 	//find length of word
-	int length = 0;
-	while (word[length] != 0) {
-		length++;
+	int word_length = 0;
+	while (word[word_length] != 0) {
+		word_length++;
 	}
 
-	
-	//*this = String(length, word); //<- doesn't work sometimes
 
-	
-	stringSize = length+1;
+	//*this = String(word_length, word); //<- doesn't work sometimes
+
+
+	stringSize = word_length + 1;
 	str = new char[stringSize];
 
-	for (int i = 0; i < length; ++i) {
+	for (int i = 0; i < word_length; ++i) {
 		str[i] = word[i];
 	}
 
 	//null char
-	str[length] = 0; 
-	
+	str[word_length] = 0;
+
 }
 
 
@@ -113,7 +118,7 @@ bool String::operator==(const String& rhs)  const {
 //Accessor/Modifier
 char& String::operator[](int i) {
 	assert(i >= 0);
-	assert(i <= length());
+	assert(i <= stringSize); //was <=length()
 	return str[i];
 }
 
@@ -143,22 +148,22 @@ String& String::operator=(String s) {
 void    String::swap(String& rhs) {
 	char *temp_str = str;
 	int temp_stringSize = stringSize;
-	
-	str = rhs.str; 
+
+	str = rhs.str;
 	stringSize = rhs.stringSize;
 
 	rhs.str = temp_str;
-	rhs.stringSize = temp_stringSize; 
+	rhs.stringSize = temp_stringSize;
 }
 
 String  String::operator+(const String& rhs)const {
-	String result(length()+rhs.length(), str);
+	String result(length() + rhs.length(), str);
 
-	int offset = length(); 
-	for (int i = 0; i < rhs.length(); ++i) {
+	int offset = length();
+	for (int i = 0; i <= rhs.length(); ++i) {
 		result[offset + i] = rhs.str[i];
-   }
-	return result; 
+	}
+	return result;
 }
 
 String& String::operator+=    (String rhs) {
@@ -167,79 +172,103 @@ String& String::operator+=    (String rhs) {
 	//make current capacity equal to the combined capacities
 	//and keep all the current char values where they are
 	*this = String(length() + rhs.length(), str);
-	
-	for (int i = 0; i < rhs.length(); ++i) {
+
+	for (int i = 0; i <= rhs.length(); ++i) {
 		str[offset + i] = rhs.str[i];
 	}
-	return *this; 
+	return *this;
 }
 
 
-/*I feel like I'm not doing the right thing with this one:*/
+
+
+//should we be checking for eof?
 std::istream& operator >> (std::istream& in, String& rhs) {
-	 
-	char ch; 
+
+	char ch;
 	in.get(ch);
 
 	//make rhs an empty string 
 	rhs = String();
 
+
+	while (ch != 0 && ch != ' ')
+	{
+		rhs += ch;
+		in.get(ch);
+
+	}
+
+	/*
 	//if its not eof or null or new line add char to rhs
 	//newline was giving me issues for some reason
 	while (ch !=0 && !in.eof() && ch != '\n')
 	{
-		rhs += ch; 
-		in.get(ch);
-	
-	}
-	
-	
+	rhs += ch;
+	in.get(ch);
 
-	return in; 
-	
+	}
+	*/
+
+
+	return in;
+
 }
 
-std::ostream& operator << (std::ostream& out, const String& rhs) {
-	for (int i = 0; i < rhs.length(); ++i) {
-		if (rhs.str[i] != 0) {
-			out << rhs.str[i];
-		}
 
+std::ostream& operator << (std::ostream& out, const String& rhs) {
+	out << rhs.str;
+
+	/*
+	for (int i = 0; i < rhs.length(); ++i) {
+	if (rhs.str[i] != 0) {
+	out << rhs.str[i];
 	}
 
+	}
+	*/
 
 	return out;
 }
 
 //resets capacity to int
 void    String::resetCapacity(int n) {
-	if (n > length()) {
-		*this = String(n, str);
+	char * new_array = new char[n + 1];
+	int i = 0;
+	while (str[i] != 0) {
+		new_array[i] = str[i];
 	}
+	new_array[i] = '\0';
+
+	stringSize = n + 1;
+
+	delete[] str;
+
+	str = new_array;
+
 }
 
-
-bool String::operator<(const String& rhs) const {
-	//check which is longer
-	int conditional_length;
-	if (length() <= rhs.length()) {
-		conditional_length = length();
-	}
-	//rhs.length()>lenght()
-	else {
-		conditional_length = rhs.length();
-	}
-
-	//only loop up to the shortest tring
-	for (int i = 0; i < conditional_length; ++i) {
-		if (str[i] < rhs.str[i]) {
-			return true;
+bool String::operator<(const String& rhs)const {
+	//lhs string is assumed to be lessthan rhs
+	if (length() < rhs.length()) {
+		for (int i = 0; i < length(); ++i) {
+			if (str[i] > rhs[i]) {
+				return false;
+			}
 		}
+		return true;
 	}
-	if (conditional_length == 0) {
-		return (str[0] < rhs.str[0]);
+	//length >= rhs.length
+	//lhs string is assumed to be greater than or equal to rhs
+	else {
+		for (int i = 0; i < rhs.length(); ++i) {
+			if (str[i] < rhs[i]) {
+				return true;
+			}
+		}
+		return false;
+
 	}
-	return false;
 }
 
 
@@ -265,6 +294,7 @@ String String::substr(int start, int end)const {
 		result[j] = str[i];
 		++j;
 	}
+	result[j] = '\0';
 
 	return result;
 }
@@ -274,7 +304,7 @@ String String::substr(int start, int end)const {
 
 //find string
 //***Need to add error checking
-int    String::findstr(int start, const String&s) const{
+int    String::findstr(int start, const String&s) const {
 	//if start <= 0
 	if (start < 0) start = 0;
 
@@ -288,13 +318,13 @@ int    String::findstr(int start, const String&s) const{
 	//the first letter of the search word s
 	for (int i = start, j = 0; i < length(); ++i) {
 		int pos_found = i;
-		
+
 		//if first letter found
 		if (str[i] == s[j]) {
-			found = true; 
+			found = true;
 			//look for the rest of the search word letters
 			while (j < s.length()) {
-				
+
 				//if letter is found search at next position
 				//for the next letter of the search word
 				if (str[i] == s[j]) {
@@ -319,7 +349,7 @@ int    String::findstr(int start, const String&s) const{
 		//if first letter not found look at next positon
 
 	}
-	
+
 	//if after for loop search word is not found
 	return -1;
 }
@@ -330,29 +360,26 @@ int    String::findchar(int start, char ch) const {
 	//starting from start to end of str search for ch
 	for (int i = start; i < length(); ++i) {
 		if (str[i] == ch) {
-			return i; 
+			return i;
 		}
 	}
 
 	//if ch not found
-	return -1; 
+	return -1;
 }
 
 
 String  operator+(const char* s_array, const String& s) {
 	//convert char array into a String object
-	String result(s_array);  
-	//concatinate the two 
-	result = result + s; 
-	return result; 
+	String converted_array(s_array);
+	return (converted_array + s);
 }
 
 
 
 String  operator+ (char ch, const String& s) {
-	String result(ch); 
-	result += s; 
-	return result; 
+	String converted_ch(ch);
+	return(converted_ch + s);
 }
 
 
@@ -375,15 +402,15 @@ bool    operator== (char ch, const String& s) {
 }
 
 bool    operator<       (const char* arr, const String&s) {
-		return(String(arr) < s);
-	}
-	
+	return(String(arr) < s);
+}
+
 bool    operator<  (char ch, const String& s) {
-		return (String(ch) < s);
-	}
+	return (String(ch) < s);
+}
 
 bool    operator<= (const String& lhs, const String& rhs) {
-	return(lhs < rhs || lhs == rhs); 
+	return(lhs < rhs || lhs == rhs);
 }
 
 bool    operator!=      (const String& lhs, const String& rhs) {
@@ -397,44 +424,4 @@ bool    operator>=      (const String& lhs, const String& rhs) {
 bool    operator>       (const String& lhs, const String& rhs) {
 	return (rhs < lhs);
 }
-
-
-//splits string into String vector elements 
-std::vector<String> String::split(char delimiter)const {
-	std::vector<String> result;
-	//if empty sting
-	if (length() == 0) {
-		result.push_back(String());
-		return result;
-	}
-
-	//start of search position
-	int from = 0;
-
-	//position delim is found
-	int pos_found = findchar(from, delimiter);
-
-	//while delim is found in string
-	while (pos_found != -1) {
-		//add substring to vector
-		//if end > start substring returns String()
-		result.push_back(substr(from, pos_found - 1));
-
-		//start next search after pos_found
-		from = pos_found + 1;
-
-		//search for next instance of delimeter
-		pos_found = findchar(from, delimiter);
-	}
-
-	//if delim never found return whole string or
-	//if last delim is found before end of string
-	if (from < length()) {
-		//add substr from from to end of string
-		result.push_back(substr(from, length() - 1));
-	}
-
-	return result;
-}
-
 
