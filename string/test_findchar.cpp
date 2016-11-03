@@ -65,6 +65,19 @@ int main ()
 		assert(str == "abcabc");
 		assert(result == -1);
 	}
-    std::cout << "Done testing findchar()." << std::endl;
+	{
+		//find a char that isn't in string
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String  str("abcabc");
+
+		// TEST
+		int result = str.findchar(6, 'a');
+
+		// VERIFY
+		assert(str == "abcabc");
+		assert(result == -1);
+	}
+	std::cout << "Done testing findchar()." << std::endl;
 }
 

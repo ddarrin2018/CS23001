@@ -20,6 +20,7 @@
 #define CS23001_STRING_INTERFACE_HPP
 
 #include <iostream>
+#include <vector>
 
 
 ////////////////////////////////////////////////////
@@ -54,6 +55,9 @@ public:
 
     friend std::ostream& operator<<(std::ostream&, const String&);
     friend std::istream& operator>>(std::istream&, String&);
+
+	std::vector<String> String::split(char) const;
+
 
 private:
 			//initializing the capacity

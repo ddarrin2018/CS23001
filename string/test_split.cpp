@@ -46,12 +46,13 @@ int main()
 
 		// TEST
 		std::vector<String> result = str1.split(';');
-		std::vector<String> answer = { ""};
+		std::vector<String> answer = {""};
 		// VERIFY
 		assert(str1 == "");
 		assert(result == answer);
 
 	}
+	
 
 	{
 		
@@ -90,7 +91,7 @@ int main()
 
 		// TEST
 		std::vector<String> result = str1.split(' ');
-		std::vector<String> answer = { "alligators", "are", "my", "life" };
+		std::vector<String> answer = { "", "alligators", "are", "my", "life" };
 		// VERIFY
 		assert(str1 == " alligators are my life");
 		assert(result == answer);
@@ -104,7 +105,7 @@ int main()
 
 		// TEST
 		std::vector<String> result = str1.split(' ');
-		std::vector<String> answer = { "alligators", "are", "my", "life" };
+		std::vector<String> answer = {"", "", "", "alligators", "are", "my", "life" };
 		// VERIFY
 		assert(str1 == "   alligators are my life");
 		assert(result == answer);
@@ -119,13 +120,41 @@ int main()
 
 		// TEST
 		std::vector<String> result = str1.split(' ');
-		std::vector<String> answer = { "alligators", "are", "my", "life" };
+		std::vector<String> answer = { "alligators", "are", "my", "life", "", "", "" };
 		// VERIFY
-		assert(str1 == "   alligators are my life    ");
+		assert(str1 == "alligators are my life    ");
 		assert(result == answer);
 
 	}
 
+	{
 
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str1("alligators");
+
+		// TEST
+		std::vector<String> result = str1.split(' ');
+		std::vector<String> answer = { "alligators"};
+		// VERIFY
+		assert(str1 == "alligators");
+		assert(result == answer);
+
+	}
+
+	{
+
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str1("alligators are");
+
+		// TEST
+		std::vector<String> result = str1.split(' ');
+		std::vector<String> answer = { "alligators", "are"};
+		// VERIFY
+		assert(str1 == "alligators are");
+		assert(result == answer);
+
+	}
 	std::cout << "done testing split" << std::endl;
 }
