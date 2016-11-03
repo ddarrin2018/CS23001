@@ -354,6 +354,44 @@ int    String::findstr(int start, const String&s) const {
 	return -1;
 }
 
+//splits string into String vector elements 
+std::vector<String> String::split(char delimiter)const {
+	std::vector<String> result;
+	//if empty sting
+	if (length() == 0) {
+		result.push_back(String());
+		return result;
+	}
+
+	//start of search position
+	int from = 0;
+
+	//position delim is found
+	int pos_found = findchar(from, delimiter);
+
+	//while delim is found in string
+	while (pos_found != -1) {
+		//add substring to vector
+		//if end > start substring returns String()
+		result.push_back(substr(from, pos_found - 1));
+
+		//start next search after pos_found
+		from = pos_found + 1;
+
+		//search for next instance of delimeter
+		pos_found = findchar(from, delimiter);
+	}
+
+	//if delim never found return whole string or
+	//if last delim is found before end of string
+	if (from < length()) {
+		//add substr from from to end of string
+		result.push_back(substr(from, length() - 1));
+	}
+
+	return result;
+}
+
 
 
 int    String::findchar(int start, char ch) const {

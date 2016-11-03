@@ -57,7 +57,7 @@ public:
     friend std::ostream& operator<<(std::ostream&, const String&);
     friend std::istream& operator>>(std::istream&, String&);
 
-	//std::vector<String> split(char) const;
+	std::vector<String> split(char) const;
 
 
 private:
