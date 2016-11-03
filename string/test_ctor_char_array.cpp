@@ -21,7 +21,7 @@ int main ()
 
         // VERIFY
         assert(str[0] == 'a');
-	assert(str[1] == '\0');
+		assert(str[1] == '\0');
 
     }
 

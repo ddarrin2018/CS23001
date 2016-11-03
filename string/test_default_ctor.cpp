@@ -19,7 +19,10 @@ int main ()
         String  str;
 
         // VERIFY
-        assert(str[0] == 0);
+		
+		assert(str.length() == 0);
+		assert(str.capacity() == 0);
+		assert(str[0] == 0);
     }
 
 std::cout << "Done testing default constructor." << std::endl;

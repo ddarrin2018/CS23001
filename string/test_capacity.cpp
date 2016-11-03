@@ -19,8 +19,23 @@ int main ()
 
         // VERIFY
         assert(str == "");
-        assert(result == (STRING_SIZE-1));
+        assert(result == 0);
     }
+	
+	
+	{
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String  str('a');
+
+		// TEST
+		int result = str.capacity();
+
+		// VERIFY
+		assert(str  == "a");
+		assert(result == 1);
+	}
+
 	{
 		//------------------------------------------------------
 		// SETUP FIXTURE
@@ -29,9 +44,10 @@ int main ()
 		int result = str.capacity();
 		// VERIFY
 		assert(str == "abc");
-		assert(result == (STRING_SIZE - 1));
+		assert(result == 3);
 	}
     
+
     std::cout << "Done testing capacity()." << std::endl;
 }
 
