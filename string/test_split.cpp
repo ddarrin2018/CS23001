@@ -156,5 +156,20 @@ int main()
 		assert(result == answer);
 
 	}
+
+	{
+
+		//------------------------------------------------------
+		// SETUP FIXTURE
+		String str1("this is a very very very long long long sentence sentence sentence I think think think think or maybe maybe maybe this this this is an echo echo echo");
+
+		// TEST
+		std::vector<String> result = str1.split(' ');
+		std::vector<String> answer = { "this", "is", "a", "very","very", "very", "long", "long", "long" ,"sentence" ,"sentence" ,"sentence" ,"I",  "think", "think", "think", "think", "or", "maybe", "maybe", "maybe", "this" ,"this", "this" ,"is", "an" ,"echo" ,"echo", "echo" };
+		// VERIFY
+		assert(str1 == "this is a very very very long long long sentence sentence sentence I think think think think or maybe maybe maybe this this this is an echo echo echo");
+		assert(result == answer);
+
+	}
 	std::cout << "done testing split" << std::endl;
 }
