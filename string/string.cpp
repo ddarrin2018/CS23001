@@ -369,6 +369,11 @@ std::vector<String> String::split(char delimiter)const {
 	//position delim is found
 	int pos_found = findchar(from, delimiter);
 
+	//if delim does not exist 
+	if (pos_found == -1) {
+		return result;
+	}
+
 	//while delim is found in string
 	while (pos_found != -1) {
 		//add substring to vector

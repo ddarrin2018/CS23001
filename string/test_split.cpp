@@ -46,7 +46,7 @@ int main()
 
 		// TEST
 		std::vector<String> result = str1.split(';');
-		std::vector<String> answer = {""};
+		std::vector<String> answer = {};
 		// VERIFY
 		assert(str1 == "");
 		assert(result == answer);
@@ -62,7 +62,7 @@ int main()
 
 		// TEST
 		std::vector<String> result = str1.split(';');
-		std::vector<String> answer = { "alligators are my life" };
+		std::vector<String> answer = {};
 		// VERIFY
 		assert(str1 == "alligators are my life");
 		assert(result == answer);
