@@ -135,7 +135,7 @@ int main()
 
 		// TEST
 		std::vector<String> result = str1.split(' ');
-		std::vector<String> answer = { "alligators"};
+		std::vector<String> answer = {};
 		// VERIFY
 		assert(str1 == "alligators");
 		assert(result == answer);

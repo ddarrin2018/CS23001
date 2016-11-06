@@ -359,7 +359,7 @@ std::vector<String> String::split(char delimiter)const {
 	std::vector<String> result;
 	//if empty sting
 	if (length() == 0) {
-		result.push_back(String());
+		
 		return result;
 	}
 
