@@ -1,0 +1,6 @@
+//stack and node go here
+//node public 
+
+//keep track of only top of stack
+//node contains data and a pointer to the next node in the stack
+//default copy destruc copy assignment push pop //+ is empty print is full
