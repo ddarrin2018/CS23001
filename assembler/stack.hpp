@@ -5,6 +5,9 @@
 *generic ADT stack class implemented using a linked list
 */
 
+#ifndef CSII_STACK_HPP
+#define CSII_STACK_HPP
+
 
 # include <iostream>
 # include <new> //for nothrow
@@ -13,8 +16,7 @@
 template <typename T>
 class node {
 public:
-	
-	
+
 	node(): next(0) {};
 	node(const T& x) : data(x), next(0) {};
 
@@ -29,11 +31,8 @@ public:
 	~Stack(); //destructor
 	Stack(const Stack<T>&);
 	void swap(Stack <T> &);
-	Stack<T> & operator = (Stack <T> rhs) { //was no & in notes
-		swap(rhs);
-		return *this;
-	}
-	bool isEmpty() const { return tos == 0 };
+	Stack<T> & operator = (Stack <T>);
+	bool isEmpty() const { return tos == 0; };
 	bool isFull() const;
 	void push(const T&);
 	T top() const; //peek()
@@ -44,18 +43,19 @@ private:
 };
 
 
-  
+//copy constructor
 template <typename T>
 Stack<T>::Stack(const Stack<T>& actual) {
 	node<T> * temp = actual.tos, *bottom = nullptr; 
-	while (temp->next != nullptr) {//shouldn't this be temp.tos.data != 0
-		if (tos = nullptr) { //shouldn't this be tos.next == 0?
+	tos = 0;
+	while (temp!= 0) {
+		if (tos == 0) { //if stack is empty
 			tos = new node<T>(temp->data); //create a new node with the data of temp
 			bottom = tos; //bottom is now top of stack
 		}
-		else {//if current node is empty
-			bottom->next = new node<T>(top->data);
-			botom = bottom->next;
+		else {//if stack not empty
+			bottom->next = new node<T>(temp->data);
+			bottom = bottom->next;
 		}
 		
 		temp = temp->next;
@@ -72,15 +72,15 @@ void Stack<T>::swap(Stack<T>& rhs) {
 
 template<typename T>
 bool Stack<T>::isFull()const {
-	Node<T> * node = new(std::nothrow) Node<T>;
-	if (node == nullptr)
+	node<T> * temp = new(std::nothrow) node<T>;
+	if (temp == nullptr)
 		return true;
-	delete node;
+	delete temp;
 	return false;
 }
 
 template<typename T>
-Stack<T>& Stack<T>::operator=(Stack<T>& rhs)  {
+Stack<T>& Stack<T>::operator=(Stack<T> rhs)  {
 	swap(rhs);
 	return *this;
 }
@@ -94,7 +94,7 @@ Stack<T>::~Stack() {
 		//save adress of current tos node
 		temp = tos;
 		//move top of stack over to next node
-		tos = tox->next; 
+		tos = tos->next; 
 		//dealocate saved address of prev TOS
 		delete temp;
 	}
@@ -116,7 +116,7 @@ void Stack<T>::push(conts T & value) {
 //puts a new node on top of stack
 template <typename T>
 void Stack<T>::push(const T& x) {
-	assert(!isfull());
+	assert(!isFull());
 	//points a pointer at a newly alocated node 
 	//initialized with value x
 	node<T> *temp = new node<T>(x);
@@ -142,13 +142,13 @@ void Stack<T>::push(const T& x) {
 
 
 //takes the top node off stack
-//so when we exit this  method the dealocator deletes temp?
 template<typename T>
 T Stack<T>::pop() {
 	assert(!isEmpty());
 	T result = tos->data;
 	node<T> * temp = tos; 
 	tos = tos->next;
+	delete temp;
 	return result;
 }
 
@@ -158,3 +158,5 @@ T Stack<T>::top() const{
 	assert(!isEmpty());
 	return tos->data; 
 }
+
+#endif // !CSII_STACK_HPP
