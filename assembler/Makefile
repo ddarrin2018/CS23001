@@ -14,12 +14,13 @@ CPP_FLAGS    = -g -Wall -W -Wunused -Wuninitialized -Wshadow -std=c++11
 INCLUDE_OPT  = 
 
 #This is teh path for your string.cpp and string.hpp 
-#Alternativly you can have a copy in the local folder and then: STRING_DIR = string/
+#Alternativly you can have a copy in the local folder and then: 
+#STRING_DIR = string/
 STRING_DIR = ../string/
 
 #===========================================================================
 # Your STACK tests here.
-STACK_TESTS =  test_default_ctor test_pop test_push
+STACK_TESTS =  test_default_ctor test_pop test_push test_assignment test_copy_ctor test_is_empty test_is_full test_top
 
 #===========================================================================
 # Your UTILITIES tests here.
@@ -63,6 +64,11 @@ tests: stack.hpp ${STRING_DIR}string.hpp ${STACK_TESTS}
 	./test_default_ctor
 	./test_pop
 	./test_push
+	./test_assignment
+	./test_copy_ctor
+	./test_is_empty
+	./test_is_full
+	./test_top
 
 #===========================================================================
 # Run test programs
