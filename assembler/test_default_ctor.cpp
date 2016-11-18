@@ -2,7 +2,7 @@
 //Tests: default constructor
 
 
-#include "string\string.hpp"
+#include "../string/string.hpp"
 #include "stack.hpp"
 
 int main() {

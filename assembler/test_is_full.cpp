@@ -2,7 +2,7 @@
 //Tests: isFull() method test
 
 
-#include "string\string.hpp"
+#include "../string/string.hpp"
 #include "stack.hpp"
 
 int main() {

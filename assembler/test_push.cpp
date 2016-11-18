@@ -2,7 +2,7 @@
 //Tests: push() method
 
 
-#include "string\string.hpp"
+#include "../string/string.hpp"
 #include "stack.hpp"
 
 int main() {
