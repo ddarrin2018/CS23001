@@ -82,24 +82,24 @@ testutils: utilities.hpp stack.hpp ${STRING_DIR}string.hpp ${UTILS_TESTS}
 #===========================================================================
 # Compile postfix
 
-utilites.o: utilites.cpp utilites.hpp stack.hpp
-	${CPP} ${CPP_FLAGS} ${INCLUDE_OPT} -c utilites.cpp
+utilities.o: utilities.cpp utilities.hpp stack.hpp
+	${CPP} ${CPP_FLAGS} ${INCLUDE_OPT} -c utilities.cpp
 
-postfix.o: postfix.cpp ${STRING_DIR}string.hpp stack.hpp utilites.hpp
+postfix.o: postfix.cpp ${STRING_DIR}string.hpp stack.hpp utilities.hpp
 	${CPP} ${CPP_FLAGS} ${INCLUDE_OPT} -c postfix.cpp
 
 
-postfix: postfix.o string.o utilites.o
+postfix: postfix.o string.o utilities.o
 	${CPP} ${CPP_FLAGS} postfix.o string.o utilites.o -o postfix
 
 #===========================================================================
 # Compile assembler
 
-assembler.o: assembler.cpp ${STRING_DIR}string.hpp stack.hpp utilites.hpp
+assembler.o: assembler.cpp ${STRING_DIR}string.hpp stack.hpp utilities.hpp
 	${CPP} ${CPP_FLAGS} ${INCLUDE_OPT} -c assembler.cpp
 
-assembler: assembler.o string.o utilites.o
-	${CPP} ${CPP_FLAGS} string.o assembler.o  utilites.o -o assembler
+assembler: assembler.o string.o utilities.o
+	${CPP} ${CPP_FLAGS} string.o assembler.o  utilities.o -o assembler
 
 
 
