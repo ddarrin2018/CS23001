@@ -15,7 +15,12 @@ input file format:
 	//output filename is optional
 	//if no output it will output to screen 
 //make postfix builds the application
+/*Drop the semi colons. 
 
+ 
+
+Should have a space between all the ( ) and operators.
+*/
 
 
 #include "utilities.hpp"
@@ -34,17 +39,44 @@ int main(int argc, char *argv[]) {
 	std::ifstream in(argv[1]);
 	if (!in) { std::cout << "Couldn't open " << argv[1] << "\n"; exit(2); }
 	
-	//openst output file
+	//opens output file
 	if (argc == 3) {
+	  //checks outputfile
 	  std::ofstream out(argv[2]);
 	  if (!out) {std::cout << "Couldn'topen " << argv[2] << "\n"; exit(3);}
+	  
+	  String token;
+	  //infix expression
+	  String infix;
+	  while(!in.eof()){
+	    in >> token; 
+	    
+	    //untill end of line is reached
+	    if (token!=";"){
+	      infix = infix + token;
+	      out << token;
+	    }
+	    else{//if end of line is reached
+	      out << "\n";
+	      
+	      //convert
+	      String postfix = inToPost(infix);
+	      
+	      //output converted expression 
+	      out << postfix << "\n"; 
+	    }
+	  }
+	  
+	  out.close();
+	  
 	}
 
 	std::cout << "before close" << std::endl;
 	
 	//close streams
+	
 	in.close();
-	if (argc == 3) {out.close();}
+       
 	
 	return 0;
 }
