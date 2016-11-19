@@ -5,7 +5,7 @@ String inToPost(String infix) {
 	std::vector<String>  tokens = infix.split(' ');
 	Stack<String> temp;
 
-	for (int i = 0; i < (tokens.size() - 1); i++) {//ignore last element 
+	for (size_t i = 0; i < (tokens.size() - 1); i++) {//ignore last element 
 												   //std::cout << "[" << tokens[i] << "] ";
 		String token = tokens[i];
 
