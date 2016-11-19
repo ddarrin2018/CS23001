@@ -25,14 +25,26 @@ input file format:
 int main(int argc, char *argv[]) {
 
 	//makes sure there is at least one cmd line argument
-	if (argc == 0) {
+	if (argc == 1) {
 		std::cout << "input filename is required" << std::endl;
 		exit(1);//?
 		}
-	std::ifstream file(argv[0]);
-	if (!file) { std::cout << "Couldn't open " << argv[0] << "\n"; exit(2); }
 	
-	std::cout << "opened correctly" << std::endl;
-	file.close();
+	//opens input file
+	std::ifstream in(argv[1]);
+	if (!in) { std::cout << "Couldn't open " << argv[1] << "\n"; exit(2); }
+	
+	//openst output file
+	if (argc == 3) {
+	  std::ofstream out(argv[2]);
+	  if (!out) {std::cout << "Couldn'topen " << argv[2] << "\n"; exit(3);}
+	}
+
+	std::cout << "before close" << std::endl;
+	
+	//close streams
+	in.close();
+	if (argc == 3) {out.close();}
+	
 	return 0;
 }

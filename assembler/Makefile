@@ -90,7 +90,7 @@ postfix.o: postfix.cpp ${STRING_DIR}string.hpp stack.hpp utilities.hpp
 
 
 postfix: postfix.o string.o utilities.o
-	${CPP} ${CPP_FLAGS} postfix.o string.o utilites.o -o postfix
+	${CPP} ${CPP_FLAGS} postfix.o string.o utilities.o -o postfix
 
 #===========================================================================
 # Compile assembler
