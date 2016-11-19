@@ -11,6 +11,7 @@
 
 # include <iostream>
 # include <new> //for nothrow
+#include <cassert>
 
 
 template <typename T>
