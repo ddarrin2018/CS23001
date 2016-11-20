@@ -37,33 +37,39 @@ int main(int argc, char *argv[]) {
 	
 	//opens input file
 	std::ifstream in(argv[1]);
-	if (!in) { std::cout << "Couldn't open " << argv[1] << "\n"; exit(2); }
+	if (!in) { std::cout << "Couldn't open input file  " << argv[1] << "\n"; exit(2); }
 	
 	//opens output file
 	if (argc == 3) {
 	  //checks outputfile
 	  std::ofstream out(argv[2]);
-	  if (!out) {std::cout << "Couldn'topen " << argv[2] << "\n"; exit(3);}
+	  if (!out) {std::cout << "Couldn'topen output file " << argv[2] << "\n"; exit(3);}
 	  
 	  String token;
 	  //infix expression
 	  String infix;
 	  while(!in.eof()){
 	    in >> token; 
-	    
+	  
 	    //untill end of line is reached
-	    if (token!=";"){
-	      infix = infix + token;
-	      out << token;
-	    }
+		if (token != ";") {
+
+			//add token to expression 
+			infix = infix + token + " ";
+		
+		}
 	    else{//if end of line is reached
-	      out << "\n";
-	      
+
+			//output infix expression
+			out << infix << "\n";
+			 
 	      //convert
 	      String postfix = inToPost(infix);
 	      
 	      //output converted expression 
 	      out << postfix << "\n"; 
+		  //clear old expression
+		  infix = "";
 	    }
 	  }
 	  
