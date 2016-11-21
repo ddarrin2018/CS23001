@@ -192,7 +192,7 @@ std::istream& operator >> (std::istream& in, String& rhs) {
 	rhs = String();
 
 
-	while (ch != 0 && ch != ' ')
+	while (ch != 0 && ch != ' ' && ch != '\n' && !in.eof())
 	{
 		rhs += ch;
 		in.get(ch);
