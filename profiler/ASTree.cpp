@@ -8,8 +8,8 @@
  *  Modified by:
  *
  */
-
 #include "ASTree.hpp"
+#include <iostream> //needed?
 
 
 /////////////////////////////////////////////////////////////////////
@@ -115,7 +115,7 @@ AST::AST(nodes t, const std::string& s) {
             tag = s;
             break;
         case token:
-            text = unEscape(s);
+            text = unEscape(s); //removes <> ??
             break;
         case whitespace:
             text = s;
@@ -129,6 +129,9 @@ AST::AST(nodes t, const std::string& s) {
 //
 AST::~AST() {
     //NEED TO IMPLEMENT
+	for (std::list<AST*>::iterator i = child.begin(); i != child.end(); ++i) {
+		delete *i; 
+	}
 }
 
 
@@ -136,7 +139,14 @@ AST::~AST() {
 // Copy Constructor for AST
 //
 AST::AST(const AST& actual) {
-    //NEED TO IMPLEMENT
+	nodeType = actual.nodeType;
+	tag = actual.tag;
+	closeTag = actual.closeTag;
+	text = actual.text;
+
+	for (std::list<AST*>::const_iterator i = actual.child.begin(); i != actual.child.end(); ++i) {
+		child.push_back(new AST(*(*i))); 
+	}
 }
 
 
@@ -144,7 +154,11 @@ AST::AST(const AST& actual) {
 // Constant time swap for AST
 //
 void AST::swap(AST& b) {
-    //NEED TO IMPLEMENT
+	std::swap(nodeType, b.nodeType);
+	tag.swap(b.tag);
+	closeTag.swap(b.closeTag);
+	text.swap(b.text);
+	child.swap(b.child);
 }
 
 /////////////////////////////////////////////////////////////////////

@@ -21,9 +21,10 @@
 #include <string>
 #include <algorithm>
 
-class  AST;
+class  AST;//forward declaration?
 enum   nodes {category, token, whitespace};
 
+//free functions? :
 bool                     isStopTag (std::string);
 std::string              readUntil (std::istream&, char);
 std::string              unEscape  (std::string);
@@ -33,7 +34,7 @@ std::vector<std::string> tokenize  (const std::string& s);
 ////////////////////////////////////////////////////////////////////////
 // An AST is either a: 
 //     -Syntactic category node
-//     -Token node
+//     -Token node //?what is a token node?<<< is token the code?
 //     -Whitespace node
 //
 // CLASS INV: if (nodeType == category)
@@ -44,7 +45,7 @@ std::vector<std::string> tokenize  (const std::string& s);
 class AST {
 public:
                   AST       () {};
-                  AST       (nodes t) : nodeType(t)       {};
+                  AST       (nodes t) : nodeType(t)       {}; //would this be used for category only?
                   AST       (nodes t, const std::string&);
                   ~AST      ();
                   AST       (const AST&);
@@ -78,7 +79,7 @@ private:
 class srcML {
 public:
             srcML     () : tree(0)    {};
-            ~srcML    ()              {delete tree;}
+            ~srcML    ()              {delete tree;}//?calls AST's destructor?
             srcML     (const srcML&);
     void    swap      (srcML&);
     srcML&  operator= (srcML);

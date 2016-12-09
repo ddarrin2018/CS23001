@@ -11,6 +11,8 @@
  *
  */
 
+
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -19,6 +21,13 @@
 
 #include "ASTree.hpp"
 #include "profile.hpp"
+
+//test function 
+void test_cpy_ctor(srcML code) {
+	std::ofstream out("../profiler/test.txt");
+
+	out << code; 
+}
 
 
 //
@@ -35,7 +44,7 @@ int main(int argc, char *argv[]) {
         return(1);
     }
     
-    srcML                     code;           //Source code to be profiled.
+    srcML                     code;           //Source code to be profiled. b 
     std::vector<std::string>  files;          //List of file names (no .xml)
     std::vector<std::string>  profileNames;   //List of profile names
     
@@ -47,10 +56,12 @@ int main(int argc, char *argv[]) {
         profileNames.push_back(filename);
     }
     
+
     std::ifstream inFile(files[0].c_str());    //Read in the main.
-    inFile >> code;
+    inFile >> code;//
     inFile.close();
     
+	test_cpy_ctor(code); //# function
     code.mainHeader(profileNames);             //Add in main header info
     code.mainReport(profileNames);             //Add in the report
     code.funcCount(profileNames[0]);           //Count funciton invocations
@@ -61,6 +72,7 @@ int main(int argc, char *argv[]) {
     std::ofstream outFile(outFileName.c_str());
     outFile << code << std::endl;
     outFile.close();
+
 
     for (unsigned i = 1; i < files.size(); ++i) {  //Read rest of the files.
         inFile.open(files[i].c_str());
