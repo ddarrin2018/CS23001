@@ -9,7 +9,6 @@
  *
  */
 #include "ASTree.hpp"
-#include <iostream> //needed?
 
 
 /////////////////////////////////////////////////////////////////////
@@ -212,6 +211,40 @@ void AST::mainHeader(std::vector<std::string>& profileNames) {
     // declaration.
     //Also, add in the profile declaration for functions and the
     //include for profile.hpp
+
+	std::list<AST*>::iterator subtreeItr = child.begin();
+
+	//inserting include statements
+	AST * includeChildPtr = new AST(token, "#include \"profile.hpp\"\n");
+
+	child.insert(subtreeItr, includeChildPtr);
+
+
+	for (std::vector<std::string>::iterator nameItr = profileNames.begin();
+		nameItr != profileNames.end(); ++nameItr) {
+		
+		//changing profile name to filename _ => .
+
+		std::string profile_name = *nameItr;
+		size_t underscore_pos = profile_name.find_last_of('_');
+
+		std::string filename = profile_name.replace(underscore_pos, 1, ".");
+
+		std::string textToAdd = "profile " + *nameItr + "(\"" + filename + "\");\n";
+
+		//adding an extra line after end because I want
+		if (nameItr == --profileNames.end()) {
+			textToAdd = textToAdd + "\n";
+		}
+
+		//creating new pointer to a subtree
+		AST * declareChildPtr = new AST(token, textToAdd);
+
+		//inserting new child
+		child.insert(subtreeItr, declareChildPtr);
+		
+	
+	}	
 }
 
 
@@ -226,7 +259,32 @@ void AST::fileHeader(const std::string& profileName) {
     // extern declaration.
     //Also, add in the extern declaration for functions and the
     //include for profile.hpp
-    
+
+	//adding include statement
+	std::list<AST*>::iterator subtreeItr = child.begin();
+
+	//inserting include statements
+	AST * includeChildPtr = new AST(token, "#include \"profile.hpp\"\n");
+
+	child.insert(subtreeItr, includeChildPtr);
+
+	//adding extern declarations
+
+	//changing profile name to filename _ => .
+	std::string profile_name = profileName;
+	size_t underscore_pos = profile_name.find_last_of('_');
+
+	std::string filename = profile_name.replace(underscore_pos, 1, ".");
+
+	std::string textToAdd = "exter profile " + profileName + "(\"" + filename + "\");\n";
+
+	//creating new pointer to a subtree
+	AST * declarationChildPtr = new AST(token, textToAdd);
+
+	//inserting new child
+	child.insert(subtreeItr, declarationChildPtr);
+	    
+
 
 }
 
@@ -245,6 +303,12 @@ void AST::mainReport(std::vector<std::string>& profileNames) {
     // backwards until you find a return stmt.   You'll want
     // to insert the report statements before this return.
     
+
+	/*
+	find main function and pring a cout statement for every prfile name
+	ex:  std::cout << foo_cpp << std::endl;  
+              std::cout << main1_cpp << std::endl;  
+	*/
     
 }
 
@@ -263,6 +327,10 @@ void AST::funcCount(const std::string& profileName) {
     //        Find block and insert line as first line in block
     //
 
+	/*
+	look for function tag after its first child insert statement that passes line number and function name to that function frofile object
+	*/
+
 }
 
 
@@ -277,6 +345,9 @@ void AST::lineCount(const std::string& profileName) {
     
     // Recursively check for expr_stmt and call
     // This basis is when isStopTag is true.
+
+	//traverse the tree and and pass the line number to the profile object after ever statement
+
     
     
 }
