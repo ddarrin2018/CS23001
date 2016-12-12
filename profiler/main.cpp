@@ -25,7 +25,7 @@
 //test function 
 void test_cpy_ctor(srcML code) {
 	std::ofstream out("../profiler/test.txt");
-
+	
 	out << code; 
 }
 
@@ -63,6 +63,7 @@ int main(int argc, char *argv[]) {
     
 	test_cpy_ctor(code); //# function
     code.mainHeader(profileNames);             //Add in main header info
+	test_cpy_ctor(code); //# function
     code.mainReport(profileNames);             //Add in the report
     code.funcCount(profileNames[0]);           //Count funciton invocations
     code.lineCount(profileNames[0]);           //Count line invocations

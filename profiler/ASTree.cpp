@@ -212,39 +212,43 @@ void AST::mainHeader(std::vector<std::string>& profileNames) {
     //Also, add in the profile declaration for functions and the
     //include for profile.hpp
 
-	std::list<AST*>::iterator subtreeItr = child.begin();
+	std::list<AST*>::iterator subtreeItr = child.begin(); 
 
 	//inserting include statements
-	AST * includeChildPtr = new AST(token, "#include \"profile.hpp\"\n");
+AST * includeChildPtr = new AST(token, "#include \"profile.hpp\"\n");
 
-	child.insert(subtreeItr, includeChildPtr);
+child.insert(subtreeItr, includeChildPtr);
+
+//---------------
+for (std::vector<std::string>::iterator nameItr = profileNames.begin();
+	nameItr != profileNames.end(); ++nameItr) {
+
+	//changing profile name to filename _ => .
+
+	std::string profile_name = *nameItr;
+	size_t underscore_pos = profile_name.find_last_of('_');
+
+	std::string filename = profile_name.replace(underscore_pos, 1, ".");
+
+	std::string textToAdd = "profile " + *nameItr + "(\"" + filename + "\");\n";
+
+	//adding an extra line after end because I want
+	if (nameItr == --profileNames.end()) {
+		textToAdd = textToAdd + "\n";
+	}
+
+	//creating new pointer to a subtree
+	AST * declareChildPtr = new AST(token, textToAdd);
+
+	//inserting new child
+	child.insert(subtreeItr, declareChildPtr);
 
 
-	for (std::vector<std::string>::iterator nameItr = profileNames.begin();
-		nameItr != profileNames.end(); ++nameItr) {
-		
-		//changing profile name to filename _ => .
 
-		std::string profile_name = *nameItr;
-		size_t underscore_pos = profile_name.find_last_of('_');
 
-		std::string filename = profile_name.replace(underscore_pos, 1, ".");
 
-		std::string textToAdd = "profile " + *nameItr + "(\"" + filename + "\");\n";
 
-		//adding an extra line after end because I want
-		if (nameItr == --profileNames.end()) {
-			textToAdd = textToAdd + "\n";
-		}
-
-		//creating new pointer to a subtree
-		AST * declareChildPtr = new AST(token, textToAdd);
-
-		//inserting new child
-		child.insert(subtreeItr, declareChildPtr);
-		
-	
-	}	
+}
 }
 
 
@@ -253,12 +257,12 @@ void AST::mainHeader(std::vector<std::string>& profileNames) {
 //
 void AST::fileHeader(const std::string& profileName) {
 
-    //NEED TO IMPLEMENT
-    //Skip down a couple lines.
-    //For each file profile name, add a new node with a profile 
-    // extern declaration.
-    //Also, add in the extern declaration for functions and the
-    //include for profile.hpp
+	//NEED TO IMPLEMENT
+	//Skip down a couple lines.
+	//For each file profile name, add a new node with a profile 
+	// extern declaration.
+	//Also, add in the extern declaration for functions and the
+	//include for profile.hpp
 
 	//adding include statement
 	std::list<AST*>::iterator subtreeItr = child.begin();
@@ -276,14 +280,14 @@ void AST::fileHeader(const std::string& profileName) {
 
 	std::string filename = profile_name.replace(underscore_pos, 1, ".");
 
-	std::string textToAdd = "exter profile " + profileName + "(\"" + filename + "\");\n";
+	std::string textToAdd = "extern profile " + profileName + "(\"" + filename + "\");\n";
 
 	//creating new pointer to a subtree
 	AST * declarationChildPtr = new AST(token, textToAdd);
 
 	//inserting new child
 	child.insert(subtreeItr, declarationChildPtr);
-	    
+
 
 
 }
@@ -294,24 +298,40 @@ void AST::fileHeader(const std::string& profileName) {
 // Assumes only one return at end of main body.
 //
 void AST::mainReport(std::vector<std::string>& profileNames) {
-    
-    //NEED TO IMPLEMENT
-    
-    //Find the function with name main and then start from the end.
-    //Find the main - function with name of "main"
-    //Then start from the end() of this function and iterate
-    // backwards until you find a return stmt.   You'll want
-    // to insert the report statements before this return.
-    
+
+	//NEED TO IMPLEMENT
+
+	//Find the function with name main and then start from the end.
+	//Find the main - function with name of "main"
+	//Then start from the end() of this function and iterate
+	// backwards until you find a return stmt.   You'll want
+	// to insert the report statements before this return.
+
 
 	/*
 	find main function and pring a cout statement for every prfile name
-	ex:  std::cout << foo_cpp << std::endl;  
-              std::cout << main1_cpp << std::endl;  
+	ex:  std::cout << foo_cpp << std::endl;
+			  std::cout << main1_cpp << std::endl;
 	*/
-    
-}
+	
+	for (std::list<AST *>::iterator childItr = child.begin(); childItr != child.end(); ++childItr) {
+		if ((*childItr)->tag == "function" && (*childItr)->getChild("name")->getName() == "main") {
+			std::list<AST*>::iterator subtreeItr = (*childItr)->child.begin();
+			//AST * blocktree = (*subtreeItr)->getChild("block");
+			}
 
+		
+		
+	}
+		
+	
+	
+    
+	
+
+
+}
+ 
 
 /////////////////////////////////////////////////////////////////////
 // Adds in a line to count the number of times each function is executed.
