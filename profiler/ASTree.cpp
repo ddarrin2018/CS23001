@@ -363,7 +363,7 @@ void AST::funcCount(const std::string& profileName) {
 	look for function tag after its first child insert statement that passes line number and function name to that function frofile object
 	*/
 
-	AST * newNode = new AST(token, "//<<<I'm here");
+
 
 	for (std::list<AST*>::iterator unitItr = child.begin(); unitItr != child.end(); ++unitItr) {
 		//point iterator at function
@@ -374,11 +374,10 @@ void AST::funcCount(const std::string& profileName) {
 
 			//point to  first child of block
 			std::list<AST*>::iterator blockItr = blockAST->child.begin();
-
+			
+			AST * newNode = new AST(token, "//<<<I'm here");			
 			//insert node before first child
-			blockAST->child.insert(++blockItr, newNode);
-
-		}
+			blockAST->child.insert(++blockItr, newNode);		}
 	}
 
 }
