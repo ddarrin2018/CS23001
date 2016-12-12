@@ -313,18 +313,18 @@ void AST::mainReport(std::vector<std::string>& profileNames) {
 	ex:  std::cout << foo_cpp << std::endl;
 			  std::cout << main1_cpp << std::endl;
 	*/
-	
+  /*
 	for (std::list<AST *>::iterator childItr = child.begin(); childItr != child.end(); ++childItr) {
 		if ((*childItr)->tag == "function" && (*childItr)->getChild("name")->getName() == "main") {
 			std::list<AST*>::iterator subtreeItr = (*childItr)->child.begin();
 			//AST * blocktree = (*subtreeItr)->getChild("block");
 			}
 
-		
+  	
 		
 	}
 		
-	
+  */	
 	
     
 	
