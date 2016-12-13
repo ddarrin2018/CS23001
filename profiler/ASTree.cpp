@@ -375,7 +375,13 @@ void AST::funcCount(const std::string& profileName) {
 			//point to  first child of block
 			std::list<AST*>::iterator blockItr = blockAST->child.begin();
 			
-			AST * newNode = new AST(token, "//<<<I'm here");			
+			//get function name
+			std::string functionName = (*unitItr)->getChild("name")->getName();
+			
+			//create node text
+			std::string textToAdd = " " + profileName + ".count(__LINE__, \"" + functionName + "\");";
+			
+			AST * newNode = new AST(token, textToAdd);			
 			//insert node before first child
 			blockAST->child.insert(++blockItr, newNode);		}
 	}
@@ -395,7 +401,34 @@ void AST::lineCount(const std::string& profileName) {
 	// This basis is when isStopTag is true.
 
 	//traverse the tree and and pass the line number to the profile object after ever statement
+	for (std::list<AST*>::iterator unitItr = child.begin(); unitItr != child.end(); ++unitItr) {
+		//point iterator at function
+		if (isStopTag((*unitItr)->tag)) {
+			//got onto next child
+			continue;
+		}
+		else if ((*unitItr)->tag == "expr_stmt") {
+			
 
+			//create node text
+			std::string textToAdd = " " + profileName + ".count(__LINE__);";
+			
+			AST * newNode = new AST(token, textToAdd);
+			
+			
+			std::list<AST*>::iterator tempItr = unitItr;
+			
+			//incrementing tempItr and including new node
+			child.insert(++tempItr, newNode);
+
+			
+
+		}
+		else {
+			//recursive call
+			(*unitItr)->lineCount(profileName);
+		}
+	}
 
 
 }
